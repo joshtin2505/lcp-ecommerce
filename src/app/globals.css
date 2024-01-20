@@ -1,11 +1,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+  
+  /* --> Primary Colors */
+  /* 
+    --primaryColor300
+    --primaryColor400
+    --primaryColor500
+    --primaryColor600
+    --primaryColor700
+  */
+ 
+  /* --> Secondary Colors */
+  /*
 
-:root {
+    --secondaryColor300
+    --secondaryColor400
+    --secondaryColor500
+    --secondaryColor600
+    --secondaryColor700
+  */
+  
+  /* --> Tertiary Colors */
+  /*
+    --tertiaryColor300
+    --tertiaryColor400
+    --tertiaryColor500
+    --tertiaryColor600
+    --tertiaryColor700
+  */
+  
+  /* --> Background Colors */
+  /*
+
+    --pBgroundColor
+    --sBgroundColor
+    --tBgroundColor
+    --qBgroundColor
+  */
+  
+  /* --> Text */
+  /*
+    --primaryTextColor
+    --secondaryTextColor
+    --tertiaryTextColor
+    --quaternaryTextColor
+  */
+ 
+  /* --> Status */
+  /*
+    --successColor
+    --warningColor
+    --dangerColor
+    --infoColor
+    --normalColor 
+  */
+
+  :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,13 +72,8 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: rgb(var(--primaryTextColor));
+  background-color: var(--pBgroundColor);
 }
 
 @layer utilities {
