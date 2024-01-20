@@ -1,0 +1,18 @@
+.nav {
+    background: var(--tBgroundColor);
+    
+}
+.nav .links {
+    color: var(--primaryColor500);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.nav .linkSelected{
+    color: var(--primaryColor500);
+    font-weight: 600;
+    font-size: 1.2rem;
+    background: linear-gradient(92deg, #00697A 0%, #001518 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+
+}

@@ -74,7 +74,10 @@
 body {
   color: rgb(var(--primaryTextColor));
   background-color: var(--pBgroundColor);
+  box-sizing: border-box;
 }
+
+
 
 @layer utilities {
   .text-balance {
