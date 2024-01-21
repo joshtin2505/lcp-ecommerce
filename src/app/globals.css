@@ -57,7 +57,7 @@
   */
 
   :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: #000;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
@@ -71,10 +71,17 @@
   }
 }
 
+html{
+  width: auto;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  overflow-x: hidden;
+  
+}
 body {
   color: rgb(var(--primaryTextColor));
   background-color: var(--pBgroundColor);
-  box-sizing: border-box;
 }
 
 

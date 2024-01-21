@@ -1,0 +1,14 @@
+.title-welcome, .title-brand {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 72px;
+}
+.title-welcome{
+    color: var(--primaryColor700);
+}
+.title-brand {
+    background: linear-gradient(270deg, var(--primaryColor500) 4.81%, #76B9B2 98.5%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

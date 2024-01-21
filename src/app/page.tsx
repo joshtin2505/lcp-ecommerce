@@ -2,6 +2,7 @@
 import Nav from "@/components/Nav"
 import ImageGallery from "@/components/ImageGallery"
 import useTheme from "@/hooks/useThemes"
+import WelcomText from "@/components/WelcomText"
 export default function Home() {
   const setTheme = useTheme()
 
@@ -11,7 +12,8 @@ export default function Home() {
       <Nav/>
     </header>      
 
-    <section className="h-screen w-full items-center">
+    <section className="h-screen w-full items-center flex px-28">
+      <WelcomText/>
       <ImageGallery/>
     </section>
     

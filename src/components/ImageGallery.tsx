@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './ImageGallery.css'
 import { motion, useAnimate } from 'framer-motion'
+import { BsChevronRight, BsChevronLeft} from 'react-icons/bs'
 
 type imgGalery = {id: number, imgSrc: string, product: string}
 type GaleryArray = imgGalery[]
@@ -49,12 +50,14 @@ function ImageGallery() {
         animate(scope.current,{ duration: 0.1, opacity: 1 })
     },[array]) 
     return (
-    <div className="w-3/5 flex h-full justify-center items-center ">
-        <button onClick={() => handleClick(false)} className='text-2xl font-bold'>{'<'}</button>
+    <div className="w-3/5 flex h-full justify-center items-center gap-20">
+        <button onClick={() => handleClick(false)} className='text-2xl btnImageGalery'>
+            <BsChevronLeft  height={50} width={50}/>
+        </button>
         <motion.figure className="relative w-96 h-96" ref={scope}>
             {
                 array.slice(0,4).map((item, i) => (
-                <motion.img className={'absolute w-96 aspect-square cursor-pointer img img' + i + ' ' + rotate(i)} 
+                <motion.img className={'absolute w-96 aspect-square cursor-pointer img img shadow-md shadow-black/30 ' + i + ' ' + rotate(i)} 
                 key={item.id} 
                 src={item.imgSrc} 
                 alt={item.product}  
@@ -69,7 +72,9 @@ function ImageGallery() {
             }
             
         </motion.figure>
-        <button onClick={() => handleClick(false)} className='text-2xl font-bold'>{'>'}</button>
+        <button onClick={() => handleClick(false)} className='text-2xl btnImageGalery'>
+            <BsChevronRight  height={50} width={50}/>
+        </button>
     </div>
   )
 }
