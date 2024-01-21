@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './ImageGallery.css'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimate } from 'framer-motion'
 
 type imgGalery = {id: number, imgSrc: string, product: string}
 type GaleryArray = imgGalery[]
@@ -38,20 +38,22 @@ function ImageGallery() {
         }
     ]
     const [array, setArray] = useState<GaleryArray>(galery)
-    const controls = useAnimation()
+    const [scope, animate] = useAnimate()
 
     const handleClick = async (action: boolean) => {
         const newArray = newPosition({array: array, action: action})
-        await controls.start({ opacity: 0 })
+        await animate(scope.current, { opacity: 0 })
         setArray(newArray)
-        controls.start({ opacity: 1 })
     }
+    useEffect(()=>{
+        animate(scope.current,{ duration: 0.1, opacity: 1 })
+    },[array]) 
     return (
     <div className="w-3/5 flex h-full justify-center items-center ">
         <button onClick={() => handleClick(false)} className='text-2xl font-bold'>{'<'}</button>
-        <motion.figure className="relative w-96 h-96">
+        <motion.figure className="relative w-96 h-96" ref={scope}>
             {
-                array.map((item, i) => (
+                array.slice(0,4).map((item, i) => (
                 <motion.img className={'absolute w-96 aspect-square cursor-pointer img img' + i + ' ' + rotate(i)} 
                 key={item.id} 
                 src={item.imgSrc} 
@@ -59,7 +61,10 @@ function ImageGallery() {
                 style={{zIndex: i * -1}} 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}/>
+                transition={{ duration: 0.1 }}
+                
+                />
+
                 ))
             }
             
@@ -88,5 +93,6 @@ function rotate (i: number) {
     if (i === 0) return ''
     else if (i === 1) return 'rotate-[-10deg]'
     else if (i === 2) return 'rotate-[-20deg]'
+    else if (i === 3) return 'rotate-[-30deg]'
 }
 export default ImageGallery
