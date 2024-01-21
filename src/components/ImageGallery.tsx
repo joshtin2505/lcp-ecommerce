@@ -1,4 +1,9 @@
+import { useState } from 'react'
 import './ImageGallery.css'
+import { motion, useAnimation } from 'framer-motion'
+
+type imgGalery = {id: number, imgSrc: string, product: string}
+type GaleryArray = imgGalery[]
 function ImageGallery() {
     const galery = [
         {
@@ -32,23 +37,56 @@ function ImageGallery() {
             product: "Card"
         }
     ]
-  return (
+    const [array, setArray] = useState<GaleryArray>(galery)
+    const controls = useAnimation()
+
+    const handleClick = async (action: boolean) => {
+        const newArray = newPosition({array: array, action: action})
+        await controls.start({ opacity: 0 })
+        setArray(newArray)
+        controls.start({ opacity: 1 })
+    }
+    return (
     <div className="w-3/5 flex h-full justify-center items-center ">
-        <figure className="relative w-96 h-96">
+        <button onClick={() => handleClick(false)} className='text-2xl font-bold'>{'<'}</button>
+        <motion.figure className="relative w-96 h-96">
             {
-                galery.map((item, i) => (
-                <img className={'absolute w-96 aspect-square cursor-pointer img img' + i + ' ' + rotate(i)} key={item.id} src={item.imgSrc} alt={item.product} />
+                array.map((item, i) => (
+                <motion.img className={'absolute w-96 aspect-square cursor-pointer img img' + i + ' ' + rotate(i)} 
+                key={item.id} 
+                src={item.imgSrc} 
+                alt={item.product}  
+                style={{zIndex: i * -1}} 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}/>
                 ))
             }
-        </figure>
+            
+        </motion.figure>
+        <button onClick={() => handleClick(false)} className='text-2xl font-bold'>{'>'}</button>
     </div>
   )
 }
-
+const newPosition = ({action, array}: {action: boolean, array: GaleryArray}): GaleryArray => {
+    const localArray = [...array]
+    if(action === true) {
+        const pop = localArray.pop()
+        pop && localArray.unshift(pop)
+        const newArray = localArray
+        return newArray
+    }
+    else if (action === false){
+        const shift = localArray.shift()
+        shift && localArray.push(shift)
+        const newArray = localArray
+        return newArray
+    }
+    return array
+}
 function rotate (i: number) {
     if (i === 0) return ''
-    else if (i === 1) return 'rotate-6'
-    else if (i === 2) return 'rotate-12'
-    else if (i === 3) return 'rotate-45'
+    else if (i === 1) return 'rotate-[-10deg]'
+    else if (i === 2) return 'rotate-[-20deg]'
 }
 export default ImageGallery

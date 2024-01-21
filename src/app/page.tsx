@@ -1,7 +1,7 @@
 'use client'
-import Nav from "@/components/Nav";
-import ImageGallery from "@/components/ImageGallery";
-import useTheme from "@/hooks/useThemes";
+import Nav from "@/components/Nav"
+import ImageGallery from "@/components/ImageGallery"
+import useTheme from "@/hooks/useThemes"
 export default function Home() {
   const setTheme = useTheme()
 
@@ -17,5 +17,5 @@ export default function Home() {
     
      
     </main>
-  );
+  )
 }
