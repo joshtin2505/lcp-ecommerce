@@ -4,14 +4,11 @@
 }
 .btnImageGalery{
     color: var(--primaryColor500);
-    background: var(--tertiaryColor300);
-    padding: 4px;
-    border-radius: 4px;
-    display: flex;
+        display: flex;
     justify-self: center;
     align-items: center;
     transition: all 0.3s ease;
 }
 .btnImageGalery:hover {
-    background: var(--secondaryColor300);
+    color: var(--secondaryColor300);
 }

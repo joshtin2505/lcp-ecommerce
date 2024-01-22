@@ -1,3 +1,4 @@
+import Button from './Button'
 import './WelcomeText.css'
 function WelcomText() {
   return (
@@ -10,8 +11,9 @@ function WelcomText() {
             <h5 className='text-2xl text-pretty'>¡Somos una micro-empresa comprometida con la sostenibilidad y la creatividad!</h5>
             <p className='text-pretty'>Nos especializamos en la elaboración de papel y productos hechos a mano, utilizando materiales reciclados para ofrecerte una experiencia única y amigable con el medio ambiente.</p>
         </article>
-        <footer className='flex'>
-
+        <footer className='flex justify-start gap-9 items-center'>
+          <Button rounded='sm' type='secondary' size='xl' weight='semibold' className='welcome-btn-secondary'>Mas Informacion</Button>
+          <Button rounded='sm' type='primary' size='xl' weight='semibold' className='welcome-btn-primary'>Productos Eco</Button>
         </footer>
     </div>
   )

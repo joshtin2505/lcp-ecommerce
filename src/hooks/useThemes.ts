@@ -30,7 +30,7 @@ const lightTheme: ThemeColor = {
   },
   textColor: {
     primaryTextColor: '#181818',
-    secondaryTextColor: '#212121',
+    secondaryTextColor: '#213A3D',
     tertiaryTextColor: '#424242',
     quaternaryTextColor: '#67676767',
   },

@@ -2,42 +2,10 @@ import { useEffect, useState } from 'react'
 import './ImageGallery.css'
 import { motion, useAnimate } from 'framer-motion'
 import { BsChevronRight, BsChevronLeft} from 'react-icons/bs'
-
+import galery from '../mocks/Products.json'
 type imgGalery = {id: number, imgSrc: string, product: string}
 type GaleryArray = imgGalery[]
 function ImageGallery() {
-    const galery = [
-        {
-            id: 1,
-            imgSrc: "https://lacasitadepapelco.com/wp-content/uploads/2023/11/IMG_20210522_153932115_2-scaled.jpg",
-            product: "Mandala"
-        },
-        {
-            id: 2,
-            imgSrc: "https://lacasitadepapelco.com/wp-content/uploads/2023/11/IMG_20160822_132137626-2048x1152.jpg",
-            product: "Caja"
-        },
-        {
-            id: 3,
-            imgSrc: "https://lacasitadepapelco.com/wp-content/uploads/2023/11/IMG_20160823_113635-2048x1181.jpg",
-            product: "Album"
-        },
-        {
-            id: 4,
-            imgSrc: "https://lacasitadepapelco.com/wp-content/uploads/2023/11/IMG_20160814_143156685-2048x1152.jpg",
-            product: "Libretas"
-        },
-        {
-            id: 5,
-            imgSrc: "https://lacasitadepapelco.com/wp-content/uploads/2023/11/IMG_20180601_130447389-2048x1536.jpg",
-            product: "Kit de mesa"
-        },
-        {
-            id: 6,
-            imgSrc: "https://lacasitadepapelco.com/wp-content/uploads/2023/11/IMG_20160822_135345852-scaled.jpg",
-            product: "Card"
-        }
-    ]
     const [array, setArray] = useState<GaleryArray>(galery)
     const [scope, animate] = useAnimate()
 
@@ -57,7 +25,7 @@ function ImageGallery() {
         <motion.figure className="relative w-96 h-96" ref={scope}>
             {
                 array.slice(0,4).map((item, i) => (
-                <motion.img className={'absolute w-96 aspect-square cursor-pointer img img shadow-md shadow-black/30 ' + i + ' ' + rotate(i)} 
+                <motion.img className={'absolute w-96 aspect-square object-cover cursor-pointer img img shadow-md shadow-black/30 ' + i + ' ' + rotate(i)} 
                 key={item.id} 
                 src={item.imgSrc} 
                 alt={item.product}  

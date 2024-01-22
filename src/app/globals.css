@@ -68,6 +68,7 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    color: var(--secondaryTextColor);
   }
 }
 
@@ -84,8 +85,29 @@ body {
   background-color: var(--pBgroundColor);
 }
 
+*::-webkit-scrollbar{
+  width: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--tertiaryColor500); /* Color del thumb (la parte que puedes arrastrar) */
+  border-radius: 6px; /* Radio de la esquina del thumb */
+}
+*::-webkit-scrollbar-track {
+  background-color: var(--tBgroundColor); /* Color de fondo de la barra de scroll */
+}
 
+/* Estilos adicionales para el thumb cuando está siendo arrastrado */
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--tertiaryColor700);
+}
 
+/* Estilos para navegadores que no son Firefox ni WebKit (puedes ajustar según sea necesario) */
+* {
+  scrollbar-color: var(--tertiaryColor500) var(--tBgroundColor);
+}
+*:active {
+  scrollbar-color: var(--tertiaryColor700) var(--tBgroundColor);
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
