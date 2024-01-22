@@ -108,6 +108,9 @@ body {
 *:active {
   scrollbar-color: var(--tertiaryColor700) var(--tBgroundColor);
 }
+.main-container .welcome-section{
+  height: calc(100vh - 74px);
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -18,7 +18,7 @@ function ImageGallery() {
         animate(scope.current,{ duration: 0.1, opacity: 1 })
     },[array]) 
     return (
-    <div className="w-3/5 flex h-full justify-center items-center gap-20">
+    <div className="w-2/4 flex h-full justify-center items-center gap-20">
         <button onClick={() => handleClick(false)} className='text-2xl btnImageGalery'>
             <BsChevronLeft  height={50} width={50}/>
         </button>
