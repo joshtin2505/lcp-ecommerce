@@ -3,6 +3,8 @@ import Nav from "@/components/Nav"
 import ImageGallery from "@/components/ImageGallery"
 import useTheme from "@/hooks/useThemes"
 import WelcomText from "@/components/WelcomText"
+import AboutUs from "@/components/AboutUs"
+import ProductCard from "@/components/ProductCard"
 
 export default function Home() {
   const setTheme = useTheme()
@@ -17,12 +19,8 @@ export default function Home() {
         <WelcomText/>
         <ImageGallery/>
       </section>
-      <section>
-
-      </section>
-      <section>
-
-      </section>
+      <ProductCard/>
+      <AboutUs/>
     
      
     </main>

@@ -17,7 +17,10 @@ function Nav() {
             <Link className={pathname === '/#aboutUs'?'linkSelected' :'links'} href='#aboutUs'>Sobre Nosotros</Link>
             <Link className={pathname === 'signIn'?'linkSelected' :'links'} href='signIn'>Iniciar Sesion</Link>
             <Link className={pathname === 'signUp'?'linkSelected' :'links'} href='signUp'>Crear Cuenta</Link>
-            <BsCart className={'cartIcon'} size={22}/>
+            <div className="relative">
+                <BsCart className={'cartIcon'} size={22}/>
+                {/* <span className='cartCounter'>0</span> */}
+            </div>
         </ul>
     </nav>
   )

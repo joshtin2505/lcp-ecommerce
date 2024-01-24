@@ -29,3 +29,18 @@
     scale: 1.1;
 
 }
+.cartCounter{
+    line-height: 0;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    font-size: 0.8rem;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+    bottom: -5px;
+    right: -3px;
+    background: var(--primaryColor300);
+    position: absolute;
+    border-radius: 50%;
+}

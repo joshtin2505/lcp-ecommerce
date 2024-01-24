@@ -1,0 +1,4 @@
+.aboutUsContainer strong, .aboutUsContainer h6{
+    color: var(--primaryColor500);
+}
+
