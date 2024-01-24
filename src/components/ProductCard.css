@@ -1,0 +1,21 @@
+div section {
+    background-color: var(--qBgroundColor);
+} 
+div section hr {
+    border: 0.5px solid var(--tertiaryColor300);
+}
+.btnAddToCard{
+    background-color: var(--primaryColor700);
+    color: var(--qBgroundColor);
+}
+.btnAddToCard:hover{
+    background-color: var(--primaryColor500);
+    color: var(--qBgroundColor);
+}
+.btnAddToCard:active{
+    background-color: var(--primaryColor700);
+    color: var(--qBgroundColor);
+}
+footer .tag {
+    background: var(--tertiaryColor400);
+}

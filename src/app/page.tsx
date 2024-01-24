@@ -4,7 +4,7 @@ import ImageGallery from "@/components/ImageGallery"
 import useTheme from "@/hooks/useThemes"
 import WelcomText from "@/components/WelcomText"
 import AboutUs from "@/components/AboutUs"
-import ProductCard from "@/components/ProductCard"
+import Products from "@/components/Products"
 
 export default function Home() {
   const setTheme = useTheme()
@@ -15,11 +15,11 @@ export default function Home() {
         <Nav/>
       </header>      
 
-      <section className="welcome-section w-full items-center flex justify-center px-28">
+      <section className="welcome-section w-full items-center flex justify-center px-28 shadow-md z-10">
         <WelcomText/>
         <ImageGallery/>
       </section>
-      <ProductCard/>
+      <Products/>
       <AboutUs/>
     
      

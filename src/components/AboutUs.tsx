@@ -4,7 +4,7 @@ import { useId } from 'react'
 function AboutUs() {
 // const aboutUs = useId()
   return (
-    <section id='aboutUs' className="h-screen aboutUsContainer flex gap-4 justify-center items-center flex-col px-40">
+    <section id='aboutUs' className="h-screen aboutUsContainer flex gap-4 justify-center items-center flex-col px-52 topShadow z-10">
         <header className='w-full flex justify-start'>
             <h2 className='text-5xl font-semibold txt-deg-primary drop-shadow-lg'>¿Que es la casita de papel?</h2>
         </header>
