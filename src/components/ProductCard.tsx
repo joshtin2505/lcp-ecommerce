@@ -1,5 +1,6 @@
 import Image from "next/image"
 import './ProductCard.css'
+import { BsCart } from "react-icons/bs"
 interface ProductCardProps {
     imgSrc: string
     price: number
@@ -27,7 +28,10 @@ function ProductCard({imgSrc, price, title, tags, id, description}: ProductCardP
                 }
             </footer>
             <div className="w-full flex justify-center items-center relative">
-                <button className="btnAddToCard p-2 rounded-md absolute bottom-[-24px] transition-all hover:scale-105 hover:shadow-xl active:scale-100">Añadir al carrito</button>
+                <button className="btnAddToCard p-2 rounded-md absolute bottom-[-24px] transition-all hover:scale-105 hover:shadow-xl active:scale-100 flex gap-1 items-center text-center">
+                Añadir al carrito 
+                <BsCart size={20}/>
+                </button>
             </div>
         </section>
     </div>

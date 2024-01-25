@@ -5,6 +5,7 @@ import useTheme from "@/hooks/useThemes"
 import WelcomText from "@/components/WelcomText"
 import AboutUs from "@/components/AboutUs"
 import Products from "@/components/Products"
+import Footer from "@/components/Footer"
 
 export default function Home() {
   const setTheme = useTheme()
@@ -21,7 +22,7 @@ export default function Home() {
       </section>
       <Products/>
       <AboutUs/>
-    
+      <Footer/>
      
     </main>
   )

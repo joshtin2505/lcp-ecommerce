@@ -1,0 +1,8 @@
+.footerContainer{
+    background: var(--tertiaryColor300);
+}
+.footerContainer hr {
+    border: 1px solid var(--primaryColor500);
+    height:         100%;
+    width:          0px;   
+}
