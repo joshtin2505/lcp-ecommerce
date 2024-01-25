@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { BsCart, BsList } from 'react-icons/bs'
 import { useState } from 'react'
-
+import { motion, AnimatePresence } from 'framer-motion';
 function Nav() {
     const pathname = usePathname()
     const [dropDown, setDropDown] = useState<boolean>(false)
@@ -18,33 +18,30 @@ function Nav() {
         <button onClick={()=> setDropDown(!dropDown)} className='md:hidden sm:block'>
             <BsList size={24}/>
         </button>
-        <Links pathname={pathname} type='dropdown' hidden={dropDown ? 'flex' : 'hidden'}/>
-
+        <AnimatePresence>
+            {
+                dropDown && (
+                    <Links pathname={pathname} type='dropdown'/>
+                    )
+            }
+        </AnimatePresence>
         
     </nav>
   )
 }
-type hidde = 'hidden' | 'flex'
 type LinksProps = {
-    pathname: string, type: 'normal', hidden?: undefined
+    pathname: string, type: 'normal'
 } | {
-    pathname: string, type: 'dropdown', hidden: hidde
+    pathname: string, type: 'dropdown'
 }
-function Links({pathname, type, hidden}: LinksProps) {
-    if(type === 'dropdown'){
-        return (
-            <ul className={'gap-4 items-center justify-center text-center flex-col absolute z-20 right-20 bottom-[-280px] rounded p-4 dropdownContainer ' + hidden}>
-                <Link className={pathname === '/'?'linkSelected' :'links'} href='/'>Inicio</Link>
-                <Link className={pathname === '/#products'?'linkSelected' :'links'} href='#products'>Productos</Link>
-                <Link className={pathname === '/#aboutUs'?'linkSelected' :'links'} href='#aboutUs'>Sobre Nosotros</Link>
-                <Link className={pathname === 'signIn'?'linkSelected' :'links'} href='signIn'>Iniciar Sesion</Link>
-                <Link className={pathname === 'signUp'?'linkSelected' :'links'} href='signUp'>Crear Cuenta</Link>
-                <Cart/>
-            </ul>
-        )
-    }
+interface OptionsLinksProps {
+    pathname: string,
+    type: 'normal' | 'dropdown'
+}
+function OptionsLinks ({pathname, type}: OptionsLinksProps){
+    const hidden = type === 'normal' ? 'md:flex sm:hidden' : 'sm:flex md:hidden flex-col'
     return (
-        <ul className='md:flex sm:hidden gap-4 items-center justify-center text-center'>
+        <ul className={'gap-4 items-center justify-center text-center ' + hidden }>
             <Link className={pathname === '/'?'linkSelected' :'links'} href='/'>Inicio</Link>
             <Link className={pathname === '/#products'?'linkSelected' :'links'} href='#products'>Productos</Link>
             <Link className={pathname === '/#aboutUs'?'linkSelected' :'links'} href='#aboutUs'>Sobre Nosotros</Link>
@@ -52,6 +49,24 @@ function Links({pathname, type, hidden}: LinksProps) {
             <Link className={pathname === 'signUp'?'linkSelected' :'links'} href='signUp'>Crear Cuenta</Link>
             <Cart/>
         </ul>
+    )
+}
+function Links({pathname, type}: LinksProps) {
+
+    if(type === 'dropdown'){
+        return (
+            <motion.ul 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className={'gap-4 items-center justify-center text-center flex-col absolute z-20 right-20 bottom-[-280px] rounded p-4 dropdownContainer flex'}>
+                <OptionsLinks pathname={pathname} type='dropdown'/>
+            </motion.ul>
+        )
+    }
+    return (
+        <OptionsLinks pathname={pathname} type='normal'/>
     )
 }
 function Cart() {

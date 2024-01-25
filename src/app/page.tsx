@@ -16,7 +16,7 @@ export default function Home() {
         <Nav/>
       </header>      
 
-      <section className="welcome-section w-full items-center flex justify-center px-28 shadow-md z-10">
+      <section className="welcome-section w-full items-center flex justify-center md:px-20 flex-col md:flex-row md:h-screen shadow-md z-10">
         <WelcomText/>
         <ImageGallery/>
       </section>
