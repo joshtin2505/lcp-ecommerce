@@ -44,3 +44,7 @@
     position: absolute;
     border-radius: 50%;
 }
+.dropdownContainer{
+    background: var(--tBgroundColor);
+    border: 2px solid var(--primaryColor300);
+}
