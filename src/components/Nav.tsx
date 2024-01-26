@@ -3,7 +3,7 @@ import Link from 'next/link'
 import './Nav.css'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { BsCart, BsList } from 'react-icons/bs'
+import { BsCart, BsList, BsXLg } from 'react-icons/bs'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 function Nav() {
@@ -16,7 +16,9 @@ function Nav() {
         </Link>
         <Links pathname={pathname} type='normal'/>
         <button onClick={()=> setDropDown(!dropDown)} className='md:hidden sm:block'>
-            <BsList size={24}/>
+            {
+                dropDown ? <BsXLg size={24}/>:<BsList size={24}/>
+            }            
         </button>
         <AnimatePresence>
             {
@@ -39,7 +41,7 @@ interface OptionsLinksProps {
     type: 'normal' | 'dropdown'
 }
 function OptionsLinks ({pathname, type}: OptionsLinksProps){
-    const hidden = type === 'normal' ? 'md:flex sm:hidden' : 'sm:flex md:hidden flex-col'
+    const hidden = type === 'normal' ? 'md:flex hidden' : 'flex md:hidden flex-col'
     return (
         <ul className={'gap-4 items-center justify-center text-center ' + hidden }>
             <Link className={pathname === '/'?'linkSelected' :'links'} href='/'>Inicio</Link>
@@ -60,7 +62,7 @@ function Links({pathname, type}: LinksProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className={'gap-4 items-center justify-center text-center flex-col absolute z-20 right-20 bottom-[-280px] rounded p-4 dropdownContainer flex'}>
+            className={'gap-4 items-center justify-center text-center flex-col absolute z-20 right-20 bottom-[-280px] rounded p-4 dropdownContainer  shadow-xl flex md:hidden'}>
                 <OptionsLinks pathname={pathname} type='dropdown'/>
             </motion.ul>
         )

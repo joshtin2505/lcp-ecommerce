@@ -11,7 +11,7 @@ export default function Home() {
   const setTheme = useTheme()
 
   return (
-    <main className="main-container flex min-h-screen flex-col items-center justify-between  ">
+    <main className="main-container flex min-h-screen flex-col items-center justify-between relative ">
       <header className="w-screen relative px-14 pt-4">
         <Nav/>
       </header>      
