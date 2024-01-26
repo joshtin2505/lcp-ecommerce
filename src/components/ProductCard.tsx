@@ -1,17 +1,25 @@
+'use client'
 import Image from "next/image"
 import './ProductCard.css'
-import { BsCart } from "react-icons/bs"
-interface ProductCardProps {
-    imgSrc: string
-    price: number
-    title:string
-    description:string
-    tags: string[]
-    id: number
-}
-function ProductCard({imgSrc, price, title, tags, id, description}: ProductCardProps) {
-  return (
+import { BsCart, BsCartX } from "react-icons/bs"
+import { Cart, Product } from "@/types.d"
+import { useCart } from "@/hooks/useCart"
+import { useState } from "react"
 
+function ProductCard(product: Product) {
+    const {imgSrc, price, tags, id, description, product: title} = product
+    const {addToCart, inCart, removeFromCart, cart} = useCart()
+    const [productInCart, setProductInCart] = useState(inCart(id))
+    const handleClickToCart = () => {
+        addToCart(product)
+        setProductInCart(inCart(id))
+    }
+    const handleClickRemoveFromCart = () => {
+        removeFromCart(product)
+        setProductInCart(inCart(id))
+    }
+
+  return (
     <div className="w-60 h-auto shadow">
         <figure className="w-full productImgCont ">
             <Image className="aspect-[114/74] object-cover rounded-tl rounded-tr transition-all hover:scale-110 hover:rounded" src={imgSrc} alt={title} width={240} height={240}/>
@@ -28,10 +36,20 @@ function ProductCard({imgSrc, price, title, tags, id, description}: ProductCardP
                 }
             </footer>
             <div className="w-full flex justify-center items-center relative">
-                <button className="btnAddToCard p-2 rounded-md absolute bottom-[-24px] transition-all hover:scale-105 hover:shadow-xl active:scale-100 flex gap-1 items-center text-center">
-                Añadir al carrito 
-                <BsCart size={20}/>
-                </button>
+                {
+                    productInCart ? <button 
+                    onClick={handleClickRemoveFromCart}
+                    className="btnAddToCard p-2 rounded-md absolute bottom-[-24px] transition-all hover:scale-105 hover:shadow-xl active:scale-100 flex gap-1 items-center text-center">
+                    Remover del carrito 
+                    <BsCartX size={20}/>
+                    </button>
+                    : <button 
+                    onClick={handleClickToCart}
+                    className="btnAddToCard p-2 rounded-md absolute bottom-[-24px] transition-all hover:scale-105 hover:shadow-xl active:scale-100 flex gap-1 items-center text-center">
+                    Añadir al carrito 
+                    <BsCart size={20}/>
+                    </button>
+                }
             </div>
         </section>
     </div>

@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { BsCart, BsList, BsXLg } from 'react-icons/bs'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCart } from '@/hooks/useCart'
 function Nav() {
     const pathname = usePathname()
     const [dropDown, setDropDown] = useState<boolean>(false)
@@ -72,10 +73,14 @@ function Links({pathname, type}: LinksProps) {
     )
 }
 function Cart() {
+    const {cart} = useCart()
     return (
         <div className="relative">
             <BsCart className={'cartIcon'} size={22}/>
-            {/* <span className='cartCounter'>0</span> */}
+            {
+                cart.length > 0 && <span className='cartCounter'>{cart.length}</span>
+            }
+            
         </div>
     )
 }
