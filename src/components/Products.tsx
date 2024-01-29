@@ -10,18 +10,9 @@ function Products() {
       <div className="flex flex-wrap justify-center items-center gap-8 productsContainer">
         {
             ProductList && ProductList.map((item) => {
-              const {description,id,imgSrc,price,product,tags} = item
-              return <ProductCard 
-                      title={product}
-                      description={description}
-                      id={id}
-                      imgSrc={imgSrc}
-                      price={price}
-                      tags={tags}
-                      key={id}
-                      />
+              return <ProductCard product={item} key={item.id}/>
             })
-          }
+        }
       </div>
     </section>
   )

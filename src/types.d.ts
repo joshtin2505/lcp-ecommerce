@@ -46,7 +46,7 @@ export interface Product {
     description: string
     tags: string[]
     price: number
-    quantity: number
+    quantity?: number
 }
 export type Cart = Product[] | []
 

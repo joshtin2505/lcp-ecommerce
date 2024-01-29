@@ -6,9 +6,9 @@ import { Cart, Product } from "@/types.d"
 import { useCart } from "@/hooks/useCart"
 import { useState } from "react"
 
-function ProductCard(product: Product) {
+function ProductCard({product}: {product: Product}) {
     const {imgSrc, price, tags, id, description, product: title} = product
-    const {addToCart, inCart, removeFromCart, cart} = useCart()
+    const {addToCart, inCart, removeFromCart} = useCart()
     const [productInCart, setProductInCart] = useState(inCart(id))
     const handleClickToCart = () => {
         addToCart(product)
