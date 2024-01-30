@@ -6,15 +6,16 @@
     color: var(--secondaryColor300);
     background: var(--dangerColor);
 }
-.cartContainer .itemsContainer, .cartContainer header {
+.cartContainer .itemsContainer, .cartContainer .headerCart {
     position: relative;
 
     background-image:  radial-gradient(var(--secondaryColor500) 0.8px, transparent 0.8px), radial-gradient(var(--secondaryColor500) 0.8px, var(--pBgroundColor) 0.8px);
     background-size: 32px 32px;
     background-position: 0 0,16px 16px;
+    border: 2px solid var(--primaryColor500);
 }
 
-.cartContainer .itemsContainer::after, .cartContainer header::after {
+.cartContainer .itemsContainer::after, .cartContainer .headerCart::after {
     content: "";
     display: block;
     position: absolute;
@@ -24,4 +25,18 @@
     left: 0;
     opacity: 0;
     z-index: -10;
+}
+.cartContainer .quantityContainer{
+    background: var(--tertiaryColor400);
+}
+.cartContainer .btnCleanCart{
+    background: var(--tertiaryColor500);
+    transition: all 0.1s ease;
+}
+.cartContainer .btnCleanCart:hover{
+    background: var(--dangerColor);
+}
+.cartContainer .btnPay{
+    background: var(--primaryColor700);
+    color: var(--tertiaryColor300);
 }

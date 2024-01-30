@@ -33,6 +33,7 @@ export function cartReducer (state: Cart, action: ActionTypes): Cart {
             const newState = [...state]
             newState[productInCartIndex].quantity++
             updateLocalStorage(newState)
+            console.log('render')
             return newState
         }
         // si no esta

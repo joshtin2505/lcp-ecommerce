@@ -74,19 +74,19 @@ function Links({pathname, type}: LinksProps) {
 }
 function Cart() {
     const [isClient, setIsClient] = useState(false)
-    const {cart} = useCart()
+    const {cart, setOpenCart, openCart} = useCart()
     useEffect(()=>{
         setIsClient(true)
-    },[])
+    },[openCart])
     if (isClient){
         return (
-            <div className="relative">
+            <button onClick={() => setOpenCart(true)} className="relative outline-none">
                 <BsCart className={'cartIcon'} size={22}/>
                 {
                     cart.length > 0 && <span className='cartCounter'>{cart.length}</span>
                 }
                 
-            </div>
+            </button>
         )
     }
 }

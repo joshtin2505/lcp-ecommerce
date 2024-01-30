@@ -16,7 +16,7 @@ function ImageGallery() {
     }
     useEffect(()=>{
         animate(scope.current,{ duration: 0.1, opacity: 1 })
-    },[array]) 
+    },[array, animate, scope]) 
     return (
     <div className="w-2/4 md:flex hidden h-full justify-center items-center gap-20 ">
         <button onClick={() => handleClick(false)} className='text-2xl btnImageGalery'>
