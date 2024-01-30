@@ -4,18 +4,39 @@ div section {
 div section hr {
     border: 0.5px solid var(--tertiaryColor300);
 }
-.btnAddToCard{
+.btnAddToCart{
     background-color: var(--primaryColor700);
     color: var(--qBgroundColor);
 }
-.btnAddToCard:hover{
+.btnAddToCart:hover{
     background-color: var(--primaryColor500);
     color: var(--qBgroundColor);
 }
-.btnAddToCard:active{
+.btnAddToCart:active{
     background-color: var(--primaryColor700);
     color: var(--qBgroundColor);
 }
-footer .tag {
+.btnGoToCart{
+    background-color: var(--primaryColor700);
+    color: var(--qBgroundColor);
+}
+.btnGoToCart:hover{
+    background-color: var(--primaryColor500);
+    color: var(--qBgroundColor);
+}
+.btnGoToCart:active{
+    background-color: var(--primaryColor700);
+    color: var(--qBgroundColor);
+}
+.btnRemoveFromCart{
+    background-color: var(--dangerColor);
+    color: var(--qBgroundColor);
+}
+
+.btnRemoveFromCart:active{
+    background-color: var(--dangerColor);
+    color: var(--qBgroundColor);
+}
+div .tag {
     background: var(--tertiaryColor400);
 }

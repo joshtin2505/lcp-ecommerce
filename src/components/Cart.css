@@ -1,0 +1,27 @@
+.closeBtn{
+    background: var(--tertiaryColor400);
+    color: var(--tertiaryColor700);
+}
+.closeBtn:hover {
+    color: var(--secondaryColor300);
+    background: var(--dangerColor);
+}
+.cartContainer .itemsContainer, .cartContainer header {
+    position: relative;
+
+    background-image:  radial-gradient(var(--secondaryColor500) 0.8px, transparent 0.8px), radial-gradient(var(--secondaryColor500) 0.8px, var(--pBgroundColor) 0.8px);
+    background-size: 32px 32px;
+    background-position: 0 0,16px 16px;
+}
+
+.cartContainer .itemsContainer::after, .cartContainer header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -10;
+}

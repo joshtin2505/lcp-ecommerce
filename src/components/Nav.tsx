@@ -4,7 +4,7 @@ import './Nav.css'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { BsCart, BsList, BsXLg } from 'react-icons/bs'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/hooks/useCart'
 function Nav() {
@@ -73,15 +73,21 @@ function Links({pathname, type}: LinksProps) {
     )
 }
 function Cart() {
+    const [isClient, setIsClient] = useState(false)
     const {cart} = useCart()
-    return (
-        <div className="relative">
-            <BsCart className={'cartIcon'} size={22}/>
-            {
-                cart.length > 0 && <span className='cartCounter'>{cart.length}</span>
-            }
-            
-        </div>
-    )
+    useEffect(()=>{
+        setIsClient(true)
+    },[])
+    if (isClient){
+        return (
+            <div className="relative">
+                <BsCart className={'cartIcon'} size={22}/>
+                {
+                    cart.length > 0 && <span className='cartCounter'>{cart.length}</span>
+                }
+                
+            </div>
+        )
+    }
 }
 export default Nav

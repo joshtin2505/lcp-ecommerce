@@ -7,26 +7,27 @@ import AboutUs from "@/components/AboutUs"
 import Products from "@/components/Products"
 import Footer from "@/components/Footer"
 import CartContextProvider from "@/context/CartContext";
+import Cart from "@/components/Cart"
 
 export default function Home() {
   const setTheme = useTheme()
 
   return (
     <CartContextProvider>
-      <main className="main-container flex min-h-screen flex-col items-center justify-between relative ">
-        <header className="w-screen relative px-14 pt-4">
+      <header className="w-screen relative px-14 pt-4">
           <Nav/>
-        </header>      
-
+      </header>      
+      <main className="main-container flex min-h-screen flex-col items-center justify-between relative ">
         <section className="welcome-section w-full items-center flex justify-center md:px-20 flex-col md:flex-row md:h-screen shadow-md z-10">
           <WelcomText/>
           <ImageGallery/>
         </section>
         <Products/>
         <AboutUs/>
-        <Footer/>
-      
       </main>
+      <Cart/>
+
+      <Footer/>
     </CartContextProvider>
 
   )
