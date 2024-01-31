@@ -12,11 +12,11 @@ export const updateLocalStorage = (cart: Cart) => {
 }
 
 type ActionTypes = {
-        type: CART_ACTIONS.ADD_TO_CART | CART_ACTIONS.DECREASE_QUANTITY | CART_ACTIONS.REMOVE_FROM_CART
-        payload: Product
-    } | {
-        type: CART_ACTIONS.CLEAR_CART,
-    }
+    type: CART_ACTIONS.ADD_TO_CART | CART_ACTIONS.DECREASE_QUANTITY | CART_ACTIONS.REMOVE_FROM_CART
+    payload: Product
+} | {
+    type: CART_ACTIONS.CLEAR_CART,
+}
 
 export function cartReducer (state: Cart, action: ActionTypes): Cart { 
     
@@ -30,8 +30,8 @@ export function cartReducer (state: Cart, action: ActionTypes): Cart {
     
     if (action.type === CART_ACTIONS.ADD_TO_CART) {
         if(productInCartIndex >= 0){ // si esta el producto en carrito
-            const newState = [...state]
-            newState[productInCartIndex].quantity++
+            const newState = structuredClone(state) as Cart
+            (newState[productInCartIndex].quantity as number)++
             updateLocalStorage(newState)
             console.log('render')
             return newState
@@ -48,8 +48,10 @@ export function cartReducer (state: Cart, action: ActionTypes): Cart {
     }
     else if (action.type === CART_ACTIONS.DECREASE_QUANTITY){
         if(productInCartIndex >= 0){ // si esta el producto en carrito
-            const newState = [...state]
-            newState[productInCartIndex].quantity--
+            const newState = structuredClone(state) as Cart
+            if((newState[productInCartIndex].quantity as number) > 1){
+                (newState[productInCartIndex].quantity as number)--
+            }
             updateLocalStorage(newState)
             return newState
         }
