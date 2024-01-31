@@ -41,7 +41,7 @@ function Cart() {
                                     const totalToItem = quantity? quantity * price : price
                                     return (
                                         <>
-                                            <li key={id} className='flex w-full justify-start items-center gap-2 relative  '>
+                                            <li key={id} className='flex w-full justify-start items-center gap-2 relative itemInCartCard '>
                                                 <figure className=" ">
                                                     <Image className="aspect-[114/74] object-cover rounded transition-all hover:scale-110 hover:rounded" src={imgSrc} alt={title} width={100} height={100}/>
                                                 </figure>
@@ -51,21 +51,24 @@ function Cart() {
                                                         <span>${totalToItem}</span>
                                                     </header>
                                                 </section>
-                                                <aside className="flex absolute right-3 quantityContainer rounded p-1">
-                                                    <button className='outline-none'
+                                                <aside className="flex absolute right-3 quantityContainer rounded">
+                                                    <button className='outline-none btnDeleteItem rounded px-1 mr-[-2px] '
                                                     onClick={() => {
-                                                        quantity === 1 ? removeFromCart(item) : decreaseQuantity(item)
+                                                        removeFromCart(item) 
                                                     }}
                                                     >
-                                                        {
-                                                            quantity === 1 ? 
-                                                            <BsCartX size={20}/> 
-                                                            : 
-                                                            <BsChevronLeft size={20}/>
-                                                        }
+                                                        <BsCartX size={20}/> 
+                                                    </button>
+                                                    <button className='outline-none disabled:hidden rounded px-1'
+                                                    onClick={() => {
+                                                        decreaseQuantity(item)
+                                                    }}
+                                                    disabled={quantity === 1 ? true : false}
+                                                    >
+                                                        <BsChevronLeft size={20}/>
                                                     </button>
                                                     <strong className='px-1'>{quantity}</strong>
-                                                    <button className='outline-none'
+                                                    <button className='outline-none rounded px-1'
                                                     onClick={() => {addToCart(item)}}
                                                     >
                                                         <BsChevronRight size={20}/>

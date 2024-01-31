@@ -27,7 +27,16 @@
     z-index: -10;
 }
 .cartContainer .quantityContainer{
-    background: var(--tertiaryColor400);
+    background: var(--tertiaryColor500);
+}
+.cartContainer .quantityContainer button{
+    transition: all 0.1s ease;
+}
+.cartContainer .quantityContainer button:hover{
+    background: var(--tertiaryColor700);
+}
+.cartContainer .quantityContainer .btnDeleteItem:hover{
+    background: var(--dangerColor);
 }
 .cartContainer .btnCleanCart{
     background: var(--tertiaryColor500);
@@ -39,4 +48,7 @@
 .cartContainer .btnPay{
     background: var(--primaryColor700);
     color: var(--tertiaryColor300);
+}
+.cartContainer .itemInCartCard{
+    background: var(--tertiaryColor300);
 }
