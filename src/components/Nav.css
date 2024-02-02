@@ -1,50 +1,66 @@
 .nav {
-    background: var(--tBgroundColor);
-    color: var(--primaryColor500);
-    
+  @apply bg-light-Background-tertiary 
+        text-primary-500 
+        w-full 
+        flex 
+        px-6 
+        py-2 
+        justify-between 
+        items-center 
+        rounded;
+}
+.nav .logo {
+  @apply aspect-auto 
+        cursor-pointer;
 }
 .nav .links {
-    font-weight: 500;
-    font-size: 1.1rem;
+  @apply font-medium 
+        text-base 
+        hover:bg-gradient-to-r
+        hover:from-primary-500 
+        hover:to-dark-Background-secondary 
+        hover:text-transparent 
+        hover:bg-clip-text
+        hover:underline
+        hover:decoration-dashed
+        hover:decoration-primary-500;
 }
-.nav .links:hover{
-    background: linear-gradient(92deg, #00697A 0%, #001518 100%);
-    -webkit-background-clip: text;
-    color: transparent;
-}
-.nav .linkSelected{
-    font-weight: 600;
-    font-size: 1.2rem;
-    background: linear-gradient(92deg, #00697A 0%, #001518 100%);
-    -webkit-background-clip: text;
-    color: transparent;
 
+.nav .linkSelected {
+  @apply font-semibold
+    text-lg
+    bg-gradient-to-r
+    from-primary-500 
+    to-dark-Background-secondary 
+    text-transparent 
+    bg-clip-text;
 }
 .cartIcon {
-    transition: all 0.2s ease;
+  @apply transition-all
+    hover:cursor-pointer
+    hover:text-primary-300
+    scale-[1.1];
 }
-.cartIcon:hover {
-    cursor: pointer;
-    color: var(--primaryColor300);
-    scale: 1.1;
+.cartCounter {
+  @apply leading-[0] 
+    w-[14px] 
+    aspect-square
+    flex
+    text-sm
+    font-semibold
+    justify-center
+    items-center
+    bottom-[-5px]
+    right-[-3px]
+    bg-primary-300
+    absolute
+    rounded-full;
+}
 
-}
-.cartCounter{
-    line-height: 0;
-    width: 14px;
-    height: 14px;
-    display: flex;
-    font-size: 0.8rem;
-    font-weight: 600;
-    justify-content: center;
-    align-items: center;
-    bottom: -5px;
-    right: -3px;
-    background: var(--primaryColor300);
-    position: absolute;
-    border-radius: 50%;
-}
-.dropdownContainer{
-    background: var(--tBgroundColor);
-    border: 2px solid var(--primaryColor300);
+.dropdownContainer {
+  background: var(--tBgroundColor);
+  border: 2px solid var(--primaryColor300);
+  @apply bg-light-Background-tertiary 
+        border-primary-300
+        ;
 }

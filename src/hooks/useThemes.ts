@@ -1,5 +1,5 @@
 import { BgColor, GrupoColor, StatColor, Theme, ThemeColor, TxtColor } from "@/types.d"
-import { useState } from "react"
+import { use, useEffect, useState } from "react"
 const lightTheme: ThemeColor = {
   primary: {
     Color300: '#209BAF',
@@ -85,18 +85,33 @@ const darkTheme: ThemeColor = {
   }
 }
 const useTheme = () => {
-    const [theme, setTheme] = useState<Theme>('light')
-    if (!theme ) {
-      throw new Error('No hay un theme')
+  const [theme, setTheme] = useState<Theme>()
+  useEffect(() => {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      setTheme('dark')
     }
-    else if(theme === "light") {
-      setCssTheme({themeColors: lightTheme})
-      return setTheme
+    else {
+      setTheme('light')
     }
-    else if (theme === "dark") {
-      setCssTheme({themeColors: darkTheme})
-      return setTheme
+  },[])
+  useEffect(() => {
+
+    if (theme === "dark") {
+      document.querySelector('html')?.classList.add('dark') 
     }
+    else if (theme === "light") {
+      document.querySelector('html')?.classList.remove('dark')
+    }
+  },[theme])
+
+  // this is depercated
+  if(theme === "light") {
+    setCssTheme({themeColors: lightTheme})
+  }
+  else if (theme === "dark") {
+    setCssTheme({themeColors: darkTheme})
+  }
+  return { setTheme, theme }
 }
 function setCssTheme({themeColors}: {themeColors: ThemeColor}) {
   if (typeof document !== 'undefined'){ // this runtime in client
