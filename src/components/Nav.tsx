@@ -1,10 +1,10 @@
 'use client'
-import Link from 'next/link'
 import './Nav.css'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { BsCart, BsList, BsMoonStars, BsSun, BsXLg } from 'react-icons/bs'
 import { useEffect, useState } from 'react'
+import { BsCart, BsList, BsMoonStars, BsSun, BsXLg } from 'react-icons/bs'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/hooks/useCart'
 import useTheme from '@/hooks/useThemes'
@@ -14,7 +14,7 @@ function Nav() {
     return (
     <nav className='nav'>
         {/* Logo */}
-        <Link href='/' >
+        <Link className='logoContainer' href='/' >
             <Image src='/logo.webp' width={192}height={192} className='logo' alt='logo'/>
         </Link>
         {/* Links */}

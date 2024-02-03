@@ -7,7 +7,18 @@
         py-2 
         justify-between 
         items-center 
-        rounded;
+        rounded
+        dark:bg-dark-Background-tertiary/70;
+}
+.nav .logoContainer {
+  @apply flex 
+        items-center
+        justify-center
+        dark:bg-light-Background-tertiary
+        py-[2px]
+        px-2
+        rounded-full
+        dark:hover:shadow;
 }
 .nav .logo {
   @apply aspect-auto 
@@ -19,11 +30,18 @@
         hover:bg-gradient-to-r
         hover:from-primary-500 
         hover:to-dark-Background-secondary 
+
         hover:text-transparent 
         hover:bg-clip-text
+        
         hover:underline
         hover:decoration-dashed
-        hover:decoration-primary-500;
+        hover:decoration-primary-500
+        
+        dark:hover:decoration-primary-300
+        dark:hover:bg-gradient-to-r
+        dark:from-secondary-500
+        dark:to-primary-700;
 }
 
 .nav .linkSelected {
