@@ -30,8 +30,8 @@ function ProductCard({product, cartIsOpen}: {product: Product, cartIsOpen: boole
 
     return (
         <div className="w-60 h-auto shadow">
-            <figure className="w-full productImgCont ">
-                <Image className="aspect-[114/74] object-cover rounded-tl rounded-tr transition-all hover:scale-110 hover:rounded" src={imgSrc} alt={title} width={240} height={240}/>
+            <figure className="w-full  ">
+                <Image className="productImage" src={imgSrc} alt={title} width={240} height={240}/>
             </figure>
             <section className="w-full p-4 py-2 rounded-bl-md rounded-br-rounded-bl-md">
                 <h5 className="text-lg font-medium">{title}</h5>

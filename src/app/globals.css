@@ -56,31 +56,21 @@
     --normalColor 
   */
 
-  :root {
-  --foreground-rgb: #000;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-    color: var(--secondaryTextColor);
   }
 }
 
 html{
-  width: auto;
-  box-sizing: border-box;
-  margin: 0;
-  border: none;
-  overflow-x: hidden;
-  
+  @apply w-auto box-border m-0 border-none overflow-x-hidden; 
 }
 body {
+  @apply text-light-Text-primary
+    dark:text-dark-Text-primary
+        ;
   color: rgb(var(--primaryTextColor));
   background-color: var(--pBgroundColor);
 }
@@ -117,9 +107,5 @@ body {
   }
 }
 .txt-deg-primary{
-  background: linear-gradient(270deg, var(--primaryColor500) 50.81%, #76B9B2 98.5%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 55px;
+  @apply bg-gradient-to-l from-primary-500 to-secondary-300 bg-clip-text text-transparent;
 }

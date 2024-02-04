@@ -41,7 +41,7 @@
         dark:hover:decoration-primary-300
         dark:hover:bg-gradient-to-r
         dark:from-secondary-500
-        dark:to-primary-700;
+        dark:to-primary-500;
 }
 
 .nav .linkSelected {
@@ -51,7 +51,9 @@
     from-primary-500 
     to-dark-Background-secondary 
     text-transparent 
-    bg-clip-text;
+    bg-clip-text
+    
+    dark:from-secondary-500 dark:to-primary-500;
 }
 .cartIcon {
   @apply transition-all

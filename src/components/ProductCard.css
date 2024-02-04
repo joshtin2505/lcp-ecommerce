@@ -1,42 +1,34 @@
+figure .productImage {
+    @apply aspect-[114/74] object-cover rounded-tl rounded-tr transition-all hover:scale-110 hover:rounded;
+}
 div section {
-    background-color: var(--qBgroundColor);
+    @apply bg-light-Background-quaternary;
 } 
 div section hr {
-    border: 0.5px solid var(--tertiaryColor300);
+    @apply border-[0.5px] border-tertiary-300;
 }
 .btnAddToCart{
-    background-color: var(--primaryColor700);
-    color: var(--qBgroundColor);
+    @apply bg-primary-700 text-tertiary-300;
 }
 .btnAddToCart:hover{
-    background-color: var(--primaryColor500);
-    color: var(--qBgroundColor);
+    @apply bg-primary-500 ;
 }
 .btnAddToCart:active{
-    background-color: var(--primaryColor700);
-    color: var(--qBgroundColor);
+    @apply bg-primary-700;
 }
 .btnGoToCart{
-    background-color: var(--primaryColor700);
-    color: var(--qBgroundColor);
+    @apply bg-primary-700 text-tertiary-300;
 }
 .btnGoToCart:hover{
-    background-color: var(--primaryColor500);
-    color: var(--qBgroundColor);
+    @apply bg-primary-500;
 }
 .btnGoToCart:active{
-    background-color: var(--primaryColor700);
-    color: var(--qBgroundColor);
+    @apply bg-primary-700;
 }
 .btnRemoveFromCart{
-    background-color: var(--dangerColor);
-    color: var(--qBgroundColor);
+    @apply bg-light-Status-danger text-tertiary-300;
 }
 
-.btnRemoveFromCart:active{
-    background-color: var(--dangerColor);
-    color: var(--qBgroundColor);
-}
 div .tag {
-    background: var(--tertiaryColor400);
+    @apply bg-tertiary-300;
 }
