@@ -1,37 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# La Casita de Papel Ecommerce
 
-## Getting Started
+¡Bienvenido al proyecto "La Casita de Papel Ecommerce"!
 
-First, run the development server:
+## Descripción del Proyecto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+La Casita de Papel Ecommerce es un proyecto de comercio electrónico que se enfoca en la venta de productos de papel. Nuestro objetivo principal es proporcionar una plataforma en línea para que los clientes puedan comprar productos de papel de manera conveniente. Además, también es necesario desarrollar un dashboard e interfaz de usuario para el administrador del negocio, donde pueda realizar un seguimiento de la página y gestionar todas las actividades relacionadas con el negocio.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Cosas Hechas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Se ha implementado color themes del sitio web.
+- Se ha desarrollado el menú de navegación.
+- Se ha desarrollado el carrito de compras.
+- Se ha creado la vista de productos.
+- Se ha creado la sección "Sobre Nosotros" de la página.
+- Se ha creado el footer.
+- se ha creado una galeria de images para sitios de escritorio
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Errores por Solucionar
 
-## Learn More
+Actualmente, estamos enfrentando un conflicto entre el tema utilizado en el proyecto y el menú desplegable de navegación. Este conflicto está causando problemas visuales y de funcionalidad en el menú desplegable. Necesitamos solucionar este error para garantizar una experiencia de usuario fluida.
 
-To learn more about Next.js, take a look at the following resources:
+Al dar click en el dropDown menu se rompen los estilos, se cambioa el tema de color, pero algunos estilos no cargan
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+He pensado solucionarlo con un useMemo...
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Pasos Siguientes en el Desarrollo
 
-## Deploy on Vercel
+1. Solucionar el conflicto entre el tema y el menú desplegable de navegación.
+2. Continuar migrando los estilos de CSS puro a clases de Tailwind para mejorar la eficiencia en el desarrollo de estilos y temas.
+3. Implementar una galería de imágenes responsive.
+4. Agregar filtros para los productos.
+5. Crear un formulario de contacto.
+6. Implementar una pasarela de pago. ``fin de proyecto``
+7. Realizar pruebas exhaustivas para asegurar la funcionalidad y la apariencia correcta del sitio web.
+8. Optimizar el rendimiento del sitio web para una carga rápida y una experiencia de usuario fluida.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+¡Agradeceria por tu colaboración en el proyecto "La Casita de Papel Ecommerce"! 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
