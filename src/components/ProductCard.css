@@ -1,34 +1,42 @@
+.productCardContainer {
+    @apply w-60 h-auto shadow;
+}
+
 figure .productImage {
     @apply aspect-[114/74] object-cover rounded-tl rounded-tr transition-all hover:scale-110 hover:rounded;
 }
-div section {
-    @apply bg-light-Background-quaternary;
+.productCardContainer .productSectContainer {
+    @apply bg-light-Background-quaternary w-full p-4 py-2 rounded-bl-md rounded-br-md;
 } 
 div section hr {
     @apply border-[0.5px] border-tertiary-300;
 }
+.productCardContainer footer {
+    @apply w-full flex justify-center items-center relative;
+}
+footer .inCartBtnCont {
+    @apply flex w-full absolute bottom-[-24px] gap-3 justify-center items-center;
+}
 .btnAddToCart{
-    @apply bg-primary-700 text-tertiary-300;
-}
-.btnAddToCart:hover{
-    @apply bg-primary-500 ;
-}
-.btnAddToCart:active{
-    @apply bg-primary-700;
+    @apply bg-primary-600 text-tertiary-300 p-2 rounded-md absolute bottom-[-24px] transition-all flex gap-1 items-center text-center
+    hover:scale-105 hover:shadow-xl hover:bg-primary-500
+    active:scale-100 active:bg-primary-700;
 }
 .btnGoToCart{
-    @apply bg-primary-700 text-tertiary-300;
+    @apply bg-primary-600 text-tertiary-300 p-2 rounded-md transition-all flex gap-1 items-center text-center
+        hover:bg-primary-500  hover:scale-105 hover:shadow-xl
+        active:scale-100 active:bg-primary-700
+        disabled:opacity-60 disabled:scale-100 disabled:cursor-not-allowed;
 }
-.btnGoToCart:hover{
-    @apply bg-primary-500;
-}
-.btnGoToCart:active{
-    @apply bg-primary-700;
-}
+
 .btnRemoveFromCart{
-    @apply bg-light-Status-danger text-tertiary-300;
+    @apply p-2 rounded-md  transition-all   flex gap-1 items-center text-center bg-Status-danger-500 text-tertiary-300
+        hover:bg-Status-danger-600 hover:shadow-xl hover:scale-105
+        active:bg-Status-danger-700 active:scale-100
+        disabled:bg-Status-danger-200 disabled:text-Status-danger-700;
 }
 
 div .tag {
-    @apply bg-tertiary-300;
+    @apply bg-tertiary-300 p-2 py-1 rounded-md capitalize transition-all 
+    hover:shadow-md;
 }
