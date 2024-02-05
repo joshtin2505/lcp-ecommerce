@@ -34,7 +34,7 @@ const config: Config = {
         light: {
           Background: {
             primary: '#FBF8F4',
-            secondary: '#A3F2FF',
+            secondary: '#ecfdff',
             tertiary: '#E4F1F0',
             quaternary: '#EFF7F9',
           },
@@ -43,14 +43,7 @@ const config: Config = {
             secondary: '#213A3D',
             tertiary: '#424242',
             quaternary: '#67676767',
-          },
-          Status: {
-            success: '#00c851',
-            warning: '#ffbb33',
-            danger: '#ff4444',
-            info: '#2573e8',
-            normal: '#969696'
-          },
+          }
         },
         dark: {
           Background: {
@@ -64,15 +57,75 @@ const config: Config = {
             secondary: '#E0E0E0',
             tertiary: '#BDBDBD',
             quaternary: '#9E9E9E',
-          },
-          Status: {
-            success: '#007e33',
-            warning: '#ff8800',
-            danger: '#cc0000',
-            info: '#0344a6',
-            normal: '#787878'
-          },
+          }
+        },
+        Status: {
+          success: {
+            '50': '#ecfff3',
+            '100': '#d3ffe5',
+            '200': '#aaffcd',
+            '300': '#69ffa8',
+            '400': '#21ff7b',
+            '500': '#00f258',
+            '600': '#00ca45',
+            '700': '#009e39',
+            '800': '#007e33',
+            '900': '#02652b',
+            '950': '#003915',
+        },
+          warning: {
+            '50': '#fffbec',
+            '100': '#fff5d3',
+            '200': '#ffe8a5',
+            '300': '#ffd66d',
+            '400': '#ffb832',
+            '500': '#ffa00a',
+            '600': '#ff8800',
+            '700': '#cc6402',
+            '800': '#a14d0b',
+            '900': '#82410c',
+            '950': '#461f04',
+        },
+          danger: {
+            '50': '#fff1f1',
+            '100': '#ffdfdf',
+            '200': '#ffc5c5',
+            '300': '#ff9d9d',
+            '400': '#ff6464',
+            '500': '#ff4444',
+            '600': '#ed1515',
+            '700': '#c80d0d',
+            '800': '#a50f0f',
+            '900': '#881414',
+            '950': '#4b0404',
+        },
+          info: {
+            '50': '#ebf8ff',
+            '100': '#d2efff',
+            '200': '#afe4ff',
+            '300': '#78d6ff',
+            '400': '#39bdff',
+            '500': '#0c99ff',
+            '600': '#0074ff',
+            '700': '#005cff',
+            '800': '#004ad3',
+            '900': '#0344a6',
+            '950': '#082a63',
+        },
+          normal: {
+            '50': '#f6f6f6',
+            '100': '#e7e7e7',
+            '200': '#d1d1d1',
+            '300': '#b0b0b0',
+            '400': '#888888',
+            '500': '#787878',
+            '600': '#5d5d5d',
+            '700': '#4f4f4f',
+            '800': '#454545',
+            '900': '#3d3d3d',
+            '950': '#262626',
         }
+        },
       },
       screens: {
         'xs': '480px',
