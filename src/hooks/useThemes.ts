@@ -1,5 +1,6 @@
+'use client'
 import { BgColor, GrupoColor, StatColor, Theme, ThemeColor, TxtColor } from "@/types.d"
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 const lightTheme: ThemeColor = {
   primary: {
     Color300: '#209BAF',
@@ -84,35 +85,60 @@ const darkTheme: ThemeColor = {
     normalColor: '#787878' 
   }
 }
-const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>()
-  useEffect(() => {
-    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+const useTheme = () => { 
+  const [themeExternalView, setThemeExternalView] = useState<'light' | 'dark'> () // state for external view theme
+  const [theme, setTheme] = useState<Theme>() // external state for update theme type 'light' | 'dark' | system
+
+  useEffect(() => { // get theme from localstorage or system
+    if(window.localStorage.getItem('theme')) { // if theme is in localstorage
+      setTheme(window.localStorage.getItem('theme') as Theme)
+      return
+    }
+    else if(window.matchMedia('(prefers-color-scheme: dark)').matches){ // if theme is not in localstorage but system is dark
       setTheme('dark')
     }
-    else {
+    else { // if theme is not in localstorage but system is light
       setTheme('light')
     }
   },[])
-  useEffect(() => {
-
-    if (theme === "dark") {
+  
+  useEffect(() => { // set theme to page and localstorage
+    if (theme === "dark") { 
       document.querySelector('html')?.classList.add('dark') 
+      window.localStorage.setItem('theme', theme)
+      setThemeExternalView(theme)
     }
-    else if (theme === "light") {
+    else if (theme === "light") { 
       document.querySelector('html')?.classList.remove('dark')
+      window.localStorage.setItem('theme', theme)
+      setThemeExternalView(theme)
+    }
+    else if (theme === 'system') { 
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches){ 
+        document.querySelector('html')?.classList.add('dark') 
+        window.localStorage.setItem('theme', theme)
+        setThemeExternalView('dark')
+
+      }
+      else { 
+        window.localStorage.setItem('theme', theme)
+        document.querySelector('html')?.classList.remove('dark')
+        setThemeExternalView('light')
+ 
+      }
     }
   },[theme])
 
   // this is depercated
-  if(theme === "light") {
+  if(themeExternalView === "light") {
     setCssTheme({themeColors: lightTheme})
   }
-  else if (theme === "dark") {
+  else if (themeExternalView === "dark") {
     setCssTheme({themeColors: darkTheme})
   }
-  return { setTheme, theme }
+  return { setTheme, theme: themeExternalView }
 }
+
 function setCssTheme({themeColors}: {themeColors: ThemeColor}) {
   if (typeof document !== 'undefined'){ // this runtime in client
     const rootElement = document.documentElement

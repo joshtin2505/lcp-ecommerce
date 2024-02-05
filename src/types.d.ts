@@ -1,6 +1,6 @@
 // Themes --------------------------------->
 export type Color = `#${string}` | `Color${number}`
-export type Theme = 'light' | 'dark'
+export type Theme = 'light' | 'dark' | 'system'
 // ----------------------->
 export interface GrupoColor { 
     Color300 : Color

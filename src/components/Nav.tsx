@@ -4,10 +4,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { BsCart, BsList, BsMoonStars, BsSun, BsXLg } from 'react-icons/bs'
+import { BsCart, BsChevronBarDown, BsChevronDown, BsChevronUp, BsLaptop, BsList, BsMoonStars, BsSun, BsXLg } from 'react-icons/bs'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/hooks/useCart'
 import useTheme from '@/hooks/useThemes'
+import { Theme } from '@/types'
 function Nav() {
     const pathname = usePathname() // Get the current pathname
     const [navDropDown, setNavDropDown] = useState<boolean>(false) // State to control the dropdown menu
@@ -18,9 +19,12 @@ function Nav() {
             <Image src='/logo.webp' width={192}height={192} className='logo' alt='logo'/>
         </Link>
         {/* Links */}
-        <Links pathname={pathname} type='normal'/>
+        <NavOptions pathname={pathname} type='normal'/>
         {/* Hamburger Logo for dropdown*/}
-        <button onClick={()=> setNavDropDown(!navDropDown)} className='md:hidden sm:block'>
+        <button onClick={(e)=> {
+              e.stopPropagation()
+              setNavDropDown(!navDropDown)
+            }} className='md:hidden sm:block'>
             {
                 navDropDown ? <BsXLg size={24}/>:<BsList size={24}/>
             }            
@@ -29,7 +33,7 @@ function Nav() {
         <AnimatePresence>
             {
                 navDropDown && (
-                    <Links pathname={pathname} type='dropdown'/>
+                    <NavOptions pathname={pathname} type='dropdown'/>
                     )
             }
         </AnimatePresence>
@@ -37,7 +41,6 @@ function Nav() {
     </nav>
   )
 }
-
 interface LinksProps { // Props for the OptionsLinks component
     pathname: string,
     type: 'normal' | 'dropdown'
@@ -56,7 +59,7 @@ function OptionsLinks ({pathname, type}: LinksProps){ // Component to render the
         </ul>
     )
 }
-function Links({pathname, type}: LinksProps) { // Component to render the links
+function NavOptions({pathname, type}: LinksProps) { // Component to render the links
     if(type === 'dropdown'){
         return ( // If the type is dropdown, we use the motion component to animate the dropdown
             <motion.ul 
@@ -64,7 +67,7 @@ function Links({pathname, type}: LinksProps) { // Component to render the links
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className={'gap-4 items-center justify-center text-center flex-col absolute z-20 right-20 bottom-[-280px] rounded p-4 dropdownContainer  shadow-xl flex md:hidden'}>
+            className='dropdownContainer'>
                 <OptionsLinks pathname={pathname} type='dropdown'/>
             </motion.ul>
         )
@@ -92,17 +95,62 @@ function Cart() {
     }
 }
 function ThemeDropDown() { // Component to render the theme dropdown
+
     const {setTheme, theme} = useTheme()
-    const handleChangeTheme = () => {
-        setTheme(prevState => prevState === 'light' ? 'dark' : 'light')
+    const [dropDown, setDropDown] = useState(false)
+    const handleChangeTheme = (newTheme : Theme) => {
+        setTheme(newTheme)
     }
     return (
-        <div className="flex justify-center items-center">
-            <button onClick={handleChangeTheme} className='transition-all outline-none hover:text-primary-300 hover:scale-105'>
+        <div className="flex justify-center items-center relative">
+            <button onClick={()=> setDropDown(prevState => !prevState)} className='btnChangeTheme flex gap-2 font-medium max-md:bg-tertiary-300 max-md:p-2 max-md:py-1 max-md:rounded max-md:hover:shadow'>
                 {
-                    theme === 'light' ? <BsMoonStars size={22}/> : <BsSun size={22}/>
+                    theme === 'light' ? (
+                    <>
+                        <BsSun size={22}/>
+                        <span className='md:hidden'>Claro</span>
+                    </>
+                    )
+                     :(
+                        <>
+                            <BsMoonStars size={22}/>
+                            <span className='md:hidden'>Oscuro</span>
+                        </>
+                     )
                 }
+                    <span className='md:hidden'
+                    >
+                    {
+                        dropDown ? <BsChevronUp size={22}/> :
+                        <BsChevronDown size={22}/>
+                    }
+                    </span>
             </button>
+            <AnimatePresence>
+                {
+                    dropDown && (
+                        <motion.ul 
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        className='absolute bottom-[-140px] z-30 bg-light-Background-secondary p-2 rounded border-primary-500 border-2 flex flex-col gap-2'>
+                            <button className='cursor-pointer flex gap-2 p-1 hover:bg-tertiary-300 hover:shadow rounded' onClick={()=> handleChangeTheme('light')}>
+                                <BsSun size={22}/>
+                                Claro
+                            </button>
+                            <button className='cursor-pointer flex gap-2 p-1 hover:bg-tertiary-300 hover:shadow rounded' onClick={()=> handleChangeTheme('dark')}>
+                                <BsMoonStars size={22}/>
+                                Oscuro
+                            </button>
+                            <button className='cursor-pointer flex gap-2 p-1 hover:bg-tertiary-300 hover:shadow rounded' onClick={()=> handleChangeTheme('system')}>
+                                <BsLaptop size={22}/>
+                                Sistema
+                            </button>
+                        </motion.ul>
+                    )
+                }
+            </AnimatePresence>
         </div>
     )
 }
