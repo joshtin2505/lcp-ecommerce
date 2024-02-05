@@ -130,6 +130,12 @@ const config: Config = {
       screens: {
         'xs': '480px',
         'xxs': '320px',
+      },
+      zIndex: {
+        'min10': '-10',
+      },
+      backgroundSize: {
+        '20': '20px 20px'
       }
     },
   },
