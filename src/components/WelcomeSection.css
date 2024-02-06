@@ -1,0 +1,3 @@
+.WelcomeSectionContainer {
+    @apply w-full items-center flex justify-center lg:px-20 flex-col md:flex-row md:h-screen shadow-md z-10;
+}

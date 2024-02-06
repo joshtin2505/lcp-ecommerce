@@ -1,30 +1,24 @@
 .nav {
-  @apply bg-light-Background-tertiary text-primary-500 w-full flex px-6 py-2 justify-between items-center rounded
-    dark:bg-dark-Background-tertiary/70;
+  @apply flex items-center justify-between w-full px-6 py-2 rounded bg-light-Background-tertiary text-primary-500 dark:bg-dark-Background-tertiary/70;
 }
 .nav .logoContainer {
-  @apply flex items-center justify-center py-[2px] px-2 rounded-full
+  @apply flex items-center justify-center py-[2px] px-2 rounded-full 
+  lg:mr-0 mr-4
   dark:bg-light-Background-tertiary
     dark:hover:shadow;
 }
 .nav .logo {
-  @apply aspect-auto cursor-pointer;
+  @apply cursor-pointer aspect-auto;
 }
 .nav .links {
-  @apply font-medium text-base 
-    hover:bg-gradient-to-r hover:from-primary-500 hover:to-dark-Background-secondary hover:text-transparent hover:bg-clip-text hover:underline hover:decoration-dashed hover:decoration-primary-500
-        
-    dark:hover:decoration-primary-300 dark:hover:bg-gradient-to-r dark:from-secondary-500 dark:to-primary-500;
+  @apply text-base font-medium hover:bg-gradient-to-r hover:from-primary-500 hover:to-dark-Background-secondary hover:text-transparent hover:bg-clip-text hover:underline hover:decoration-dashed hover:decoration-primary-500 dark:hover:decoration-primary-300 dark:hover:bg-gradient-to-r dark:from-secondary-500 dark:to-primary-500;
 }
 
 .nav .linkSelected {
-  @apply font-semibold text-lg bg-gradient-to-r from-primary-500 to-dark-Background-secondary text-transparent bg-clip-text
-    
-    dark:from-secondary-500 dark:to-primary-500;
+  @apply text-lg font-semibold text-transparent bg-gradient-to-r from-primary-500 to-dark-Background-secondary bg-clip-text dark:from-secondary-500 dark:to-primary-500;
 }
 .cartIcon {
-  @apply transition-all
-    hover:cursor-pointer hover:text-primary-300 hover:scale-110;
+  @apply transition-all hover:cursor-pointer hover:text-primary-300 hover:scale-110;
 }
 .cartCounter {
   @apply leading-[0] w-4 aspect-square flex text-sm font-semibold justify-center items-center bottom-[-5px] right-[-3px] bg-secondary-400 absolute rounded-full;

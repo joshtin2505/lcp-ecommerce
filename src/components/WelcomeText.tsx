@@ -1,8 +1,8 @@
 import Button from './Button'
 import './WelcomeText.css'
-function WelcomText() {
+function WelcomeText() {
   return (
-    <div className="welcomeTextContainer ">
+    <div className="welcomeTextContainer">
       <article className='welLayout'>
           <header>
               <h1 className="title-welcome welTile">Bienvenido A</h1>
@@ -21,4 +21,4 @@ function WelcomText() {
   )
 }
 
-export default WelcomText
+export default WelcomeText

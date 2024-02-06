@@ -3,8 +3,8 @@ import './Nav.css'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
-import { BsCart, BsChevronBarDown, BsChevronDown, BsChevronUp, BsLaptop, BsList, BsMoonStars, BsSun, BsXLg } from 'react-icons/bs'
+import { useEffect, useRef, useState } from 'react'
+import { BsCart, BsChevronDown, BsChevronUp, BsLaptop, BsList, BsMoonStars, BsSun, BsXLg } from 'react-icons/bs'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/hooks/useCart'
 import useTheme from '@/hooks/useThemes'
@@ -96,14 +96,29 @@ function Cart() {
 }
 function ThemeDropDown() { // Component to render the theme dropdown
 
-    const {setTheme, theme} = useTheme()
     const [dropDown, setDropDown] = useState(false)
+    const {setTheme, theme} = useTheme()
+    const dropDownRef = useRef<HTMLUListElement>(null)
+
     const handleChangeTheme = (newTheme : Theme) => {
         setTheme(newTheme)
     }
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (dropDownRef.current && !dropDownRef.current.contains(e.target as Node)) {
+                setDropDown(false)
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside)
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    },[])
     return (
-        <div className="flex justify-center items-center relative">
-            <button onClick={()=> setDropDown(prevState => !prevState)} className='btnChangeTheme flex gap-2 font-medium max-md:bg-tertiary-300 max-md:p-2 max-md:py-1 max-md:rounded max-md:hover:shadow'>
+        <div className="relative flex items-center justify-center">
+            <button onClick={()=> setDropDown(prevState => !prevState)} className='flex gap-2 font-medium btnChangeTheme max-md:bg-tertiary-300 max-md:p-2 max-md:py-1 max-md:rounded max-md:hover:shadow'>
                 {
                     theme === 'light' ? (
                     <>
@@ -134,16 +149,16 @@ function ThemeDropDown() { // Component to render the theme dropdown
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className='absolute bottom-[-140px] z-30 bg-light-Background-secondary p-2 rounded border-primary-500 border-2 flex flex-col gap-2'>
-                            <button className='cursor-pointer flex gap-2 p-1 hover:bg-tertiary-300 hover:shadow rounded' onClick={()=> handleChangeTheme('light')}>
+                        className='absolute bottom-[-140px] z-30 bg-light-Background-secondary p-2 rounded border-primary-500 border-2 flex flex-col gap-2' ref={dropDownRef}>
+                            <button className='flex gap-2 p-1 rounded cursor-pointer hover:bg-tertiary-300 hover:shadow' onClick={()=> handleChangeTheme('light')}>
                                 <BsSun size={22}/>
                                 Claro
                             </button>
-                            <button className='cursor-pointer flex gap-2 p-1 hover:bg-tertiary-300 hover:shadow rounded' onClick={()=> handleChangeTheme('dark')}>
+                            <button className='flex gap-2 p-1 rounded cursor-pointer hover:bg-tertiary-300 hover:shadow' onClick={()=> handleChangeTheme('dark')}>
                                 <BsMoonStars size={22}/>
                                 Oscuro
                             </button>
-                            <button className='cursor-pointer flex gap-2 p-1 hover:bg-tertiary-300 hover:shadow rounded' onClick={()=> handleChangeTheme('system')}>
+                            <button className='flex gap-2 p-1 rounded cursor-pointer hover:bg-tertiary-300 hover:shadow' onClick={()=> handleChangeTheme('system')}>
                                 <BsLaptop size={22}/>
                                 Sistema
                             </button>

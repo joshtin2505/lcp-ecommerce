@@ -1,14 +1,26 @@
+.imgGalleryContainer {
+    @apply w-2/4 lg:flex hidden h-full justify-center items-center gap-20 ;
+}
+.imgGalleryContainer .iconArrow {
+    @apply hover:drop-shadow-md;
+}
+
 .img {
+    @apply border-[3px] border-primary-500 rounded-md absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 aspect-square object-cover cursor-pointer shadow-md shadow-black/30 ;
+}
+
+.btnImageGalery {
+    @apply text-primary-500 flex items-center justify-center transition-all duration-300;
+}
+
+/* .img {
     border: 3px solid var(--primaryColor500);
     border-radius: 4px;
 }
 .btnImageGalery{
     color: var(--primaryColor500);
-        display: flex;
+    display: flex;
     justify-self: center;
     align-items: center;
     transition: all 0.3s ease;
-}
-.btnImageGalery:hover {
-    color: var(--secondaryColor300);
-}
+} */
