@@ -1,18 +1,18 @@
 .productCardContainer {
-    @apply w-60 h-auto shadow;
+    @apply h-auto shadow w-60;
 }
 
 figure .productImage {
     @apply aspect-[114/74] object-cover rounded-tl rounded-tr transition-all hover:scale-110 hover:rounded;
 }
 .productCardContainer .productSectContainer {
-    @apply bg-light-Background-quaternary w-full p-4 py-2 rounded-bl-md rounded-br-md;
+    @apply w-full p-4 py-2 bg-light-Background-quaternary rounded-bl-md rounded-br-md dark:bg-dark-Background-primary;
 } 
 div section hr {
-    @apply border-[0.5px] border-tertiary-300;
+    @apply border-[0.5px] border-tertiary-300 dark:border-tertiary-700 ;
 }
 .productCardContainer footer {
-    @apply w-full flex justify-center items-center relative;
+    @apply relative flex items-center justify-center w-full;
 }
 footer .inCartBtnCont {
     @apply flex w-full absolute bottom-[-24px] gap-3 justify-center items-center;
@@ -23,20 +23,13 @@ footer .inCartBtnCont {
     active:scale-100 active:bg-primary-700;
 }
 .btnGoToCart{
-    @apply bg-primary-600 text-tertiary-300 p-2 rounded-md transition-all flex gap-1 items-center text-center
-        hover:bg-primary-500  hover:scale-105 hover:shadow-xl
-        active:scale-100 active:bg-primary-700
-        disabled:opacity-60 disabled:scale-100 disabled:cursor-not-allowed;
+    @apply flex items-center gap-1 p-2 text-center transition-all rounded-md bg-primary-600 text-tertiary-300 hover:bg-primary-500 hover:scale-105 hover:shadow-xl active:scale-100 active:bg-primary-700 disabled:opacity-60 disabled:scale-100 disabled:cursor-not-allowed;
 }
 
 .btnRemoveFromCart{
-    @apply p-2 rounded-md  transition-all   flex gap-1 items-center text-center bg-Status-danger-500 text-tertiary-300
-        hover:bg-Status-danger-600 hover:shadow-xl hover:scale-105
-        active:bg-Status-danger-700 active:scale-100
-        disabled:bg-Status-danger-200 disabled:text-Status-danger-700;
+    @apply flex items-center gap-1 p-2 text-center transition-all rounded-md bg-Status-danger-500 text-tertiary-300 hover:bg-Status-danger-600 hover:shadow-xl hover:scale-105 active:bg-Status-danger-700 active:scale-100 disabled:bg-Status-danger-200 disabled:text-Status-danger-700;
 }
 
 div .tag {
-    @apply bg-tertiary-300 p-2 py-1 rounded-md capitalize transition-all 
-    hover:shadow-md;
+    @apply p-2 py-1 capitalize transition-all rounded-md bg-tertiary-300 hover:shadow-md dark:bg-tertiary-700 dark:hover:bg-secondary-500 ;
 }

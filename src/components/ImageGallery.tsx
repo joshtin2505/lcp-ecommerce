@@ -25,7 +25,7 @@ function ImageGallery() {
     return (
     <div className="imgGalleryContainer">
         <button onClick={() => handleClick(false)} className='btnImageGalery'>
-            <BsChevronLeft className='iconArrow' size={28}/>
+            <BsChevronLeft className='iconArrow' size={30}/>
         </button>
             <motion.figure className="relative w-96 h-96" ref={scope}>
                 {
@@ -46,7 +46,7 @@ function ImageGallery() {
                 
             </motion.figure>
         <button onClick={() => handleClick(false)} className='btnImageGalery'>
-            <BsChevronRight className='iconArrow' size={28}/>
+            <BsChevronRight className='iconArrow' size={30}/>
         </button>
     </div>
   )

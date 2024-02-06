@@ -1,18 +1,19 @@
 'use client'
 import Nav from "@/components/Nav"
+
+import AboutUs from "@/components/AboutUs"
+import Products from "@/components/Products"
+import Footer from "@/components/Footer"
+import CartContextProvider from "@/context/CartContext";
 import Cart from "@/components/Cart"
 import WelcomeSection from "@/components/WelcomeSection"
-import Products from "@/components/Products"
-import AboutUs from "@/components/AboutUs"
-import Footer from "@/components/Footer"
-import CartContextProvider from "@/context/CartContext"
 
 export default function Home() {
 
   return (
     <CartContextProvider>
       <header className="home-header">
-          <Nav/> 
+          <Nav/>
       </header>      
       <main className="main-container">
         <WelcomeSection/>

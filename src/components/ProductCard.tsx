@@ -29,7 +29,7 @@ function ProductCard({product, cartIsOpen}: {product: Product, cartIsOpen: boole
     }, [inCart, id])
 
     return (
-        <div className="productCardContainer ">
+        <div className="productCardContainer">
             <figure className="w-full">
                 <Image className="productImage" src={imgSrc} alt={title} width={240} height={240}/>
             </figure>
@@ -39,7 +39,7 @@ function ProductCard({product, cartIsOpen}: {product: Product, cartIsOpen: boole
                 <p>{description}</p>
                 <hr className="w-full my-1"/>
                 <h6 className="font-medium">Tags</h6>
-                <div className="mb-8 flex gap-1 flex-wrap">
+                <div className="flex flex-wrap gap-1 mb-8">
                     {
                         tags.slice(0,5).map((tag) => <button className="tag" key={tag}>{tag}</button>)
                     }

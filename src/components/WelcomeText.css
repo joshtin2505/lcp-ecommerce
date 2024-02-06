@@ -1,33 +1,40 @@
 @tailwind utilities;
 :root {
-    --primaryColor500: #00697A;
+    --primary-500: #00697A;
 }
 @layer utilities {
     .gradient-border {
       border: 3px solid transparent;
-      border-image: linear-gradient(92deg, var(--primaryColor500) 0%, #001518 100%) 1;
+      border-image: linear-gradient(92deg, var(--primary-500) 0%, #001518 100%) 1;
     }
     .gradient-text {
-      background: linear-gradient(92deg, var(--primaryColor500) 20.81%, #001518 98.5%);
+      background: linear-gradient(92deg, var(--primary-500) 20.81%, #001518 98.5%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-border-dark {
+      border: 3px solid transparent;
+      border-image: linear-gradient(92deg, var(--primary-500) 0%, #003F49 100%) 1;
+    }
+    .gradient-text-dark {
+      background: linear-gradient(92deg, var(--primary-500) 20.81%, #003F49 98.5%);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   }
 .welcomeTextContainer {
-    @apply w-2/5 h-full flex items-center justify-center;
+    @apply flex items-center justify-center w-2/5 h-full;
 }
 .welcomeTextContainer .welLayout {
     @apply flex flex-col gap-4;
 }
 .welSlogan {
-    @apply text-pretty 
-    xxs:text-xl
-    md:text-2xl;
+    @apply text-pretty xxs:text-xl md:text-2xl;
 }
 .welTile {
-    @apply drop-shadow-lg text-6xl font-semibold
-    xxs:text-5xl;
+    @apply text-6xl font-semibold drop-shadow-lg xxs:text-5xl;
 }
 .btnContainer {
     @apply flex justify-start gap-9 items-center
@@ -36,7 +43,7 @@
     @apply hover:scale-[1.025] shadow-md;
 }
 .welcome-btn-primary{
-    @apply text-tertiary-300 bg-gradient-to-r from-primary-400 to-dark-Background-secondary;
+    @apply text-tertiary-300 bg-gradient-to-r from-primary-400 to-dark-Background-secondary dark:from-primary-500 dark:to-primary-700;
 }
 .welcome-btn-secondary span{
     @apply gradient-text gradient-border;
