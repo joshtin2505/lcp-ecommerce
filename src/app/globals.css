@@ -65,12 +65,10 @@
 }
 
 html{
-  @apply w-auto box-border m-0 border-none overflow-x-hidden; 
+  @apply box-border w-auto m-0 overflow-x-hidden border-none; 
 }
 body {
-  @apply text-light-Text-primary
-    dark:text-dark-Text-primary
-        ;
+  @apply text-light-Text-primary dark:text-dark-Text-primary ;
   color: rgb(var(--primaryTextColor));
   background-color: var(--pBgroundColor);
 }
@@ -100,6 +98,10 @@ body {
 }
 .main-container .welcome-section{
   height: calc(100vh - 74px);
+  @apply relative flex flex-col items-center justify-between min-h-screen;
+}
+.home-header {
+  @apply relative w-screen pt-4 sm:px-8 lg:px-14;
 }
 @layer utilities {
   .text-balance {
@@ -107,5 +109,5 @@ body {
   }
 }
 .txt-deg-primary{
-  @apply bg-gradient-to-l from-primary-500 to-secondary-300 bg-clip-text text-transparent;
+  @apply text-transparent bg-gradient-to-l from-primary-500 to-secondary-300 bg-clip-text;
 }
