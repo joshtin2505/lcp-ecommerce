@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import './Footer.css'
 import Link from 'next/link'
-import { BsEnvelope, BsFacebook, BsInstagram, BsMailbox, BsPhone, BsTelephone, BsWhatsapp } from 'react-icons/bs'
+import { BsEnvelope, BsFacebook, BsInstagram, BsTelephone, BsWhatsapp } from 'react-icons/bs'
 function Footer() {
   return (
-    <footer className='h-16 w-full flex justify-center items-center footerContainer gap-4 p-2 max-md:flex-wrap max-md:h-auto'>
+    <footer className='footerContainer '>
         <section>
             <figure className=''>
-                <Image src='/logo.webp' width={192}height={192} className='w-48 aspect-auto cursor-pointer' alt='logo'/>
+                <Image src='/logo.webp' width={192}height={192} className='aspect-auto cursor-pointer' alt='logo'/>
             </figure>
         </section>
         <hr className='max-md:hidden'/>
