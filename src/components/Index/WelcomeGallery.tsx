@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import './ImageGallery.css'
+import './WelcomeGallery.css'
 import { motion, useAnimate } from 'framer-motion'
 import { BsChevronRight, BsChevronLeft} from 'react-icons/bs'
-import galery from '../mocks/Products.json'
+import galery from '../../mocks/Products.json'
 
 type imgGalery = {id: number, imgSrc: string, product: string}
 type GaleryArray = imgGalery[]

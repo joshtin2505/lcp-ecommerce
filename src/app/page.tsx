@@ -1,29 +1,24 @@
-'use client'
-import Nav from "@/components/Nav"
+"use client";
+import Nav from "@/components/Nav";
 
-import AboutUs from "@/components/AboutUs"
-import Products from "@/components/Products"
-import Footer from "@/components/Footer"
-import CartContextProvider from "@/context/CartContext";
-import Cart from "@/components/Cart"
-import WelcomeSection from "@/components/WelcomeSection"
+import AboutUs from "@/components/Index/AboutUs";
+import Products from "@/components/Products";
+import Footer from "@/components/Footer";
+import Cart from "@/components/Cart";
+import WelcomeSection from "@/components/Index/WelcomeSection";
 
 export default function Home() {
-
   return (
-    <CartContextProvider>
-      <header className="home-header">
-          <Nav/>
-      </header>      
+    <>
+      <Nav />
       <main className="main-container">
-        <WelcomeSection/>
-        <Products/>
-        <AboutUs/>
+        <WelcomeSection />
+        <Products />
+        <AboutUs />
       </main>
-      <Cart/>
+      <Cart />
 
-      <Footer/>
-    </CartContextProvider>
-
-  )
+      <Footer />
+    </>
+  );
 }

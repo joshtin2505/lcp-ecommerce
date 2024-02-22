@@ -1,5 +1,5 @@
 import WelcomeText from './WelcomeText'
-import ImageGallery from './ImageGallery'
+import ImageGallery from './WelcomeGallery'
 import './WelcomeSection.css'
 
 function WelcomeSection() {
