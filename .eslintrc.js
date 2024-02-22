@@ -1,15 +1,10 @@
-module.exports = {
+export default {
   env: {
     browser: true,
     es2021: true,
     node: true,
   },
-  extends: [
-    "next/core-web-vitals",
-    "standard-with-typescript",
-    "plugin:react/recommended",
-    "prettier",
-  ],
+  extends: ["next/core-web-vitals", "standard-with-typescript", "pr"],
   overrides: [
     {
       env: {
@@ -34,4 +29,4 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
   },
-};
+}
