@@ -1,20 +1,26 @@
 .productsSection {
-    background-image: repeating-linear-gradient(0deg, var(--tBgroundColor), var(--secondaryColor500) 1px, var(--tBgroundColor) 1px, var(--tBgroundColor));
-    
-    @apply relative bg-light-Background-tertiary bg-20 overflow-y-scroll px-8 py-28 w-full flex justify-center items-center flex-col gap-6 
+  background-image: repeating-linear-gradient(
+    0deg,
+    var(--tBgroundColor),
+    var(--secondaryColor500) 1px,
+    var(--tBgroundColor) 1px,
+    var(--tBgroundColor)
+  );
+
+  @apply relative bg-light-Background-tertiary bg-20 overflow-y-scroll px-8 py-28 w-full flex justify-center items-center flex-col gap-6 
     after:block after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:opacity-0 after:z-min10
     lg:px-28;
-    &::after {
-        content: "";
-    }
+  &::after {
+    content: "";
+  }
 }
 .productsSecHeader {
-    @apply flex justify-center items-center w-full absolute top-0 py-5;
+  @apply flex justify-center items-center w-full absolute top-0 py-5;
 }
 .productsSecHeader h2 {
-    @apply text-5xl font-semibold drop-shadow-md;
+  @apply text-5xl font-semibold drop-shadow-md;
 }
 .productsContainer {
-    height: calc(100vh - 55px);
-    @apply flex flex-wrap justify-center items-center gap-8;
+  height: calc(100vh - 55px);
+  @apply flex flex-wrap justify-center items-center gap-8;
 }

@@ -1,3 +1,3 @@
 .WelcomeSectionContainer {
-    @apply z-10 flex items-center justify-center w-full shadow-md lg:px-20 md:h-screen;
+  @apply z-10 flex items-center justify-center w-full shadow-md lg:px-20 md:h-screen;
 }

@@ -1,7 +1,6 @@
-.layoutDahsboardContainer{
-
+.layoutDahsboardContainer {
 }
 .dashboardAside {
-    background: var(--sBgroundColor);
-    border: 2px solid var(--dangerColor);
+  background: var(--sBgroundColor);
+  border: 2px solid var(--dangerColor);
 }

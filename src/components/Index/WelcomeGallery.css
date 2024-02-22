@@ -1,15 +1,15 @@
 .imgGalleryContainer {
-    @apply items-center justify-center hidden w-2/4 h-full gap-20 lg:flex ;
+  @apply items-center justify-center hidden w-2/4 h-full gap-20 lg:flex;
 }
 
 .img {
-    @apply border-[3px] border-primary-500 rounded-md absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 aspect-square object-cover cursor-pointer shadow-md shadow-black/30  dark:border-secondary-700;
+  @apply border-[3px] border-primary-500 rounded-md absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 aspect-square object-cover cursor-pointer shadow-md shadow-black/30  dark:border-secondary-700;
 }
 
 .btnImageGalery {
-    @apply flex items-center justify-center transition-all duration-300 text-primary-500 dark:text-tertiary-500;
+  @apply flex items-center justify-center transition-all duration-300 text-primary-500 dark:text-tertiary-500;
 }
 
 .btnImageGalery .iconArrow {
-    @apply hover:drop-shadow-md;
+  @apply hover:drop-shadow-md;
 }

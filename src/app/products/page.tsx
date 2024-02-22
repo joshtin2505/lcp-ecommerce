@@ -1,11 +1,10 @@
-import Nav from '@/components/Nav'
-import React from 'react'
+import Nav from "@/components/Nav"
+import React from "react"
 
 function page() {
   return (
     <div>
-        <Nav/> 
-
+      <Nav />
     </div>
   )
 }

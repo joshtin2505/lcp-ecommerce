@@ -1,11 +1,11 @@
-import Nav from '@/components/Nav'
-import React from 'react'
+import Nav from "@/components/Nav"
+import React from "react"
 
-function layout({children}: {children: React.ReactNode}) {
+function layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-        {/* <Nav/> */}
-        {children}
+      {/* <Nav/> */}
+      {children}
     </>
   )
 }

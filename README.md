@@ -31,10 +31,8 @@ He pensado solucionarlo con un useMemo...
 3. Implementar una galería de imágenes responsive.
 4. Agregar filtros para los productos.
 5. Crear un formulario de contacto.
-6. Implementar una pasarela de pago. ``fin de proyecto``
+6. Implementar una pasarela de pago. `fin de proyecto`
 7. Realizar pruebas exhaustivas para asegurar la funcionalidad y la apariencia correcta del sitio web.
 8. Optimizar el rendimiento del sitio web para una carga rápida y una experiencia de usuario fluida.
 
-¡Agradeceria por tu colaboración en el proyecto "La Casita de Papel Ecommerce"! 
-
-
+¡Agradeceria por tu colaboración en el proyecto "La Casita de Papel Ecommerce"!

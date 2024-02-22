@@ -1,54 +1,62 @@
-.closeBtn{
-    background: var(--tertiaryColor400);
-    color: var(--tertiaryColor700);
+.closeBtn {
+  background: var(--tertiaryColor400);
+  color: var(--tertiaryColor700);
 }
 .closeBtn:hover {
-    color: var(--secondaryColor300);
-    background: var(--dangerColor);
+  color: var(--secondaryColor300);
+  background: var(--dangerColor);
 }
-.cartContainer .itemsContainer, .cartContainer .headerCart {
-    position: relative;
+.cartContainer .itemsContainer,
+.cartContainer .headerCart {
+  position: relative;
 
-    background-image:  radial-gradient(var(--secondaryColor500) 0.8px, transparent 0.8px), radial-gradient(var(--secondaryColor500) 0.8px, var(--pBgroundColor) 0.8px);
-    background-size: 32px 32px;
-    background-position: 0 0,16px 16px;
-    border: 2px solid var(--primaryColor500);
+  background-image: radial-gradient(
+      var(--secondaryColor500) 0.8px,
+      transparent 0.8px
+    ),
+    radial-gradient(var(--secondaryColor500) 0.8px, var(--pBgroundColor) 0.8px);
+  background-size: 32px 32px;
+  background-position:
+    0 0,
+    16px 16px;
+  border: 2px solid var(--primaryColor500);
 }
 
-.cartContainer .itemsContainer::after, .cartContainer .headerCart::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0;
-    z-index: -10;
+.cartContainer .itemsContainer::after,
+.cartContainer .headerCart::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -10;
 }
-.cartContainer .quantityContainer{
-    background: var(--tertiaryColor500);
+.cartContainer .quantityContainer {
+  background: var(--tertiaryColor500);
 }
-.cartContainer .quantityContainer button{
-    transition: all 0.1s ease;
+.cartContainer .quantityContainer button {
+  transition: all 0.1s ease;
 }
-.cartContainer .quantityContainer button:hover{
-    background: var(--tertiaryColor700);
+.cartContainer .quantityContainer button:hover {
+  background: var(--tertiaryColor700);
 }
-.cartContainer .quantityContainer .btnDeleteItem:hover{
-    background: var(--dangerColor);
+.cartContainer .quantityContainer .btnDeleteItem:hover {
+  background: var(--dangerColor);
 }
-.cartContainer .btnCleanCart{
-    background: var(--tertiaryColor500);
-    transition: all 0.1s ease;
+.cartContainer .btnCleanCart {
+  background: var(--tertiaryColor500);
+  transition: all 0.1s ease;
 }
-.cartContainer .btnCleanCart:hover{
-    background: var(--dangerColor);
+.cartContainer .btnCleanCart:hover {
+  background: var(--dangerColor);
 }
-.cartContainer .btnPay{
-    background: var(--primaryColor700);
-    color: var(--tertiaryColor300);
+.cartContainer .btnPay {
+  background: var(--primaryColor700);
+  color: var(--tertiaryColor300);
 }
-.cartContainer .itemInCartCard{
-    background: var(--tertiaryColor300);
+.cartContainer .itemInCartCard {
+  background: var(--tertiaryColor300);
 }

@@ -1,18 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
-  /* --> Primary Colors */
-  /* 
+
+/* --> Primary Colors */
+/* 
     --primaryColor300
     --primaryColor400
     --primaryColor500
     --primaryColor600
     --primaryColor700
   */
- 
-  /* --> Secondary Colors */
-  /*
+
+/* --> Secondary Colors */
+/*
 
     --secondaryColor300
     --secondaryColor400
@@ -20,35 +20,35 @@
     --secondaryColor600
     --secondaryColor700
   */
-  
-  /* --> Tertiary Colors */
-  /*
+
+/* --> Tertiary Colors */
+/*
     --tertiaryColor300
     --tertiaryColor400
     --tertiaryColor500
     --tertiaryColor600
     --tertiaryColor700
   */
-  
-  /* --> Background Colors */
-  /*
+
+/* --> Background Colors */
+/*
 
     --pBgroundColor
     --sBgroundColor
     --tBgroundColor
     --qBgroundColor
   */
-  
-  /* --> Text */
-  /*
+
+/* --> Text */
+/*
     --primaryTextColor
     --secondaryTextColor
     --tertiaryTextColor
     --quaternaryTextColor
   */
- 
-  /* --> Status */
-  /*
+
+/* --> Status */
+/*
     --successColor
     --warningColor
     --dangerColor
@@ -64,24 +64,28 @@
   }
 }
 
-html{
-  @apply box-border w-auto m-0 overflow-x-hidden border-none; 
+html {
+  @apply box-border w-auto m-0 overflow-x-hidden border-none;
 }
 body {
-  @apply text-light-Text-primary dark:text-dark-Text-primary ;
+  @apply text-light-Text-primary dark:text-dark-Text-primary;
   color: rgb(var(--primaryTextColor));
   background-color: var(--pBgroundColor);
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
   width: 10px;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: var(--tertiaryColor500); /* Color del thumb (la parte que puedes arrastrar) */
+  background-color: var(
+    --tertiaryColor500
+  ); /* Color del thumb (la parte que puedes arrastrar) */
   border-radius: 6px; /* Radio de la esquina del thumb */
 }
 *::-webkit-scrollbar-track {
-  background-color: var(--tBgroundColor); /* Color de fondo de la barra de scroll */
+  background-color: var(
+    --tBgroundColor
+  ); /* Color de fondo de la barra de scroll */
 }
 
 /* Estilos adicionales para el thumb cuando está siendo arrastrado */
@@ -96,7 +100,7 @@ body {
 *:active {
   scrollbar-color: var(--tertiaryColor700) var(--tBgroundColor);
 }
-.welcome-section{
+.welcome-section {
   height: calc(100vh - 74px);
 }
 .main-container {
@@ -110,6 +114,6 @@ body {
     text-wrap: balance;
   }
 }
-.txt-deg-primary{
+.txt-deg-primary {
   @apply text-transparent bg-gradient-to-l from-primary-500 to-secondary-300 bg-clip-text;
 }

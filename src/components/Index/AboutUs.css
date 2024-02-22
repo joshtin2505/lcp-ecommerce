@@ -1,6 +1,7 @@
-.aboutUsContainer strong, .aboutUsContainer h6{
-    color: var(--primaryColor500);
+.aboutUsContainer strong,
+.aboutUsContainer h6 {
+  color: var(--primaryColor500);
 }
 .topShadow {
-    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1);
 }

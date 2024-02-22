@@ -1,6 +1,6 @@
-.footerContainer{
-    @apply bg-tertiary-300 text-primary-700 gap-4 p-2 h-16 w-full flex justify-center items-center     max-md:flex-wrap max-md:h-auto;
+.footerContainer {
+  @apply bg-tertiary-300 text-primary-700 gap-4 p-2 h-16 w-full flex justify-center items-center     max-md:flex-wrap max-md:h-auto;
 }
 .footerContainer hr {
-    @apply bg-primary-500 border-[1px] border-primary-500 h-full w-0;
+  @apply bg-primary-500 border-[1px] border-primary-500 h-full w-0;
 }
