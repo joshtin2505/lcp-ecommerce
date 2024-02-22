@@ -2,9 +2,9 @@
 import CartContextProvider from '@/context/CartContext'
 import React from 'react'
 
-function Cover({children}: {children: React.ReactNode}) { 
+function Cover ({ children }: { children: React.ReactNode }) {
   return (
-    <CartContextProvider> 
+    <CartContextProvider>
         {children}
     </CartContextProvider>
 
