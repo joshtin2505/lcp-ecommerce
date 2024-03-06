@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-
+import { signIn } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -17,16 +17,7 @@ import {
 
 import "./SignUpForm.css"
 import Link from "next/link"
-
-export const formSchema = z.object({
-  name: z.string(),
-  lastName: z.string(),
-  email: z.string().email(),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters long",
-  }),
-  confirmPassword: z.string().min(8),
-})
+import { formSchema } from "@/lib/zod"
 
 function SignUpForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -158,6 +149,12 @@ function SignUpForm() {
           or
           <hr className="border-neutral-500 w-full" />
         </div>
+        <Button
+          onClick={() => signIn("google", { callbackUrl: "/" })}
+          className="w-full bg-secondary-500"
+        >
+          Sign Up with Google
+        </Button>
       </form>
     </Form>
   )
