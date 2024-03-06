@@ -14,6 +14,10 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form"
+
+import "./SignUpForm.css"
+import Link from "next/link"
+
 export const formSchema = z.object({
   name: z.string(),
   lastName: z.string(),
@@ -32,41 +36,58 @@ function SignUpForm() {
       name: "",
       lastName: "",
       email: "",
-      password: "junperez1234",
-      confirmPassword: "junperez1234",
+      password: "",
+      confirmPassword: "",
     },
   })
   return (
     <Form {...form}>
-      <form action="" onSubmit={form.handleSubmit(onSubmit)}>
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="juan" {...field} />
-              </FormControl>
-              <FormDescription>This is your Name.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Last Name</FormLabel>
-              <FormControl>
-                <Input placeholder="perez" {...field} />
-              </FormControl>
-              <FormDescription>This is your Last Name.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form
+        action=""
+        className="max-w-96 flex flex-col bg-white p-4 rounded-lg shadow-lg gap-2"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        <h1 className="w-full text-center text-2xl font-medium">
+          Crear Cuenta
+        </h1>
+        <div className="flex gap-2">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input
+                    className="input-SignUpForm"
+                    placeholder="juan"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>This is your Name.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="lastName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Last Name</FormLabel>
+                <FormControl>
+                  <Input
+                    className="input-SignUpForm"
+                    placeholder="perez"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>This is your Last Name.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <FormField
           control={form.control}
           name="email"
@@ -74,41 +95,69 @@ function SignUpForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="juanperez@gmail.com" {...field} />
+                <Input
+                  className="input-SignUpForm"
+                  placeholder="juanperez@gmail.com"
+                  {...field}
+                />
               </FormControl>
               <FormDescription>This is your Email.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input type="password" {...field} />
-              </FormControl>
-              <FormDescription>This is your password.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="confirmPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
-              <FormControl>
-                <Input type="password" {...field} />
-              </FormControl>
-              <FormDescription>Confirm your password.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="flex gap-2">
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    className="input-SignUpForm"
+                    type="password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>This is your password.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Confirm Password</FormLabel>
+                <FormControl>
+                  <Input
+                    className="input-SignUpForm"
+                    type="password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>Confirm your password.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <Button type="submit" className="w-full">
+          Sign Up
+        </Button>
+        <div className="w-full text-center">
+          ya tienes una cuenta?{" "}
+          <Link className="text-secondary-500 hover:underline" href="signIn">
+            Sign In
+          </Link>
+        </div>
+        <div className="flex w-full text-center justify-center items-center gap-3">
+          <hr className="border-neutral-500 w-full" />
+          or
+          <hr className="border-neutral-500 w-full" />
+        </div>
       </form>
     </Form>
   )
