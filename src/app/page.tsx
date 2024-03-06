@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main className="main-container">
+      <main className="main-containers">
         <WelcomeSection />
         <Products />
         <AboutUs />
