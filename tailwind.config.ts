@@ -1,6 +1,4 @@
 import type { Config } from "tailwindcss"
-import prettierPlugin from "prettier-plugin-tailwindcss"
-import { PluginCreator } from "tailwindcss/types/config"
 
 const config: Config = {
   darkMode: "class",
@@ -141,6 +139,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [prettierPlugin as any as PluginCreator],
+  plugins: [],
 }
 export default config
