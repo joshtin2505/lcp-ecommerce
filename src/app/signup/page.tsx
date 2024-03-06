@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 
 function page() {
   return (
-    <main className="flex flex-col justify-center items-center">
+    <main className="flex flex-col justify-center items-center welcome-section">
       <SignUpForm />
     </main>
   )
