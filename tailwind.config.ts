@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss"
-
+import { fontFamily } from "tailwindcss/defaultTheme"
 const config: Config = {
   darkMode: "class",
   content: [
@@ -11,6 +11,9 @@ const config: Config = {
   prefix: "",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+      },
       colors: {
         primary: {
           300: "#209BAF",
