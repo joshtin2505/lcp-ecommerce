@@ -19,7 +19,7 @@ function page() {
         </div>
         <Button
           type="submit"
-          className="bg-primary-500 hover:bg-primary-300 max-w-28"
+          className="bg-primary-500 hover:bg-primary-300 max-w-28 "
         >
           Sign Up
         </Button>
