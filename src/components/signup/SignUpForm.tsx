@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import {
   Form,
   FormControl,
-  FormDescription,
+  // FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -18,6 +18,7 @@ import {
 import "./SignUpForm.css"
 import Link from "next/link"
 import { formSchema } from "@/lib/zod"
+import { BsGoogle } from "react-icons/bs"
 
 function SignUpForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -47,7 +48,7 @@ function SignUpForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nombre</FormLabel>
                 <FormControl>
                   <Input
                     className="input-SignUpForm"
@@ -55,7 +56,7 @@ function SignUpForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>This is your Name.</FormDescription>
+                {/* <FormDescription>This is your Name.</FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -65,7 +66,7 @@ function SignUpForm() {
             name="lastName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last Name</FormLabel>
+                <FormLabel>Apellidos</FormLabel>
                 <FormControl>
                   <Input
                     className="input-SignUpForm"
@@ -73,7 +74,7 @@ function SignUpForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>This is your Last Name.</FormDescription>
+                {/* <FormDescription>This is your Last Name.</FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -84,7 +85,7 @@ function SignUpForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Correo</FormLabel>
               <FormControl>
                 <Input
                   className="input-SignUpForm"
@@ -92,7 +93,7 @@ function SignUpForm() {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>This is your Email.</FormDescription>
+              {/* <FormDescription>This is your Email.</FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
@@ -103,7 +104,7 @@ function SignUpForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Contraseña</FormLabel>
                 <FormControl>
                   <Input
                     className="input-SignUpForm"
@@ -111,7 +112,7 @@ function SignUpForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>This is your password.</FormDescription>
+                {/* <FormDescription>This is your password.</FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -121,7 +122,7 @@ function SignUpForm() {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
+                <FormLabel>Confirma tu Contraseña</FormLabel>
                 <FormControl>
                   <Input
                     className="input-SignUpForm"
@@ -129,31 +130,32 @@ function SignUpForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Confirm your password.</FormDescription>
+                {/* <FormDescription>Confirm your password.</FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
         <Button type="submit" className="w-full">
-          Sign Up
+          Registrate
         </Button>
         <div className="w-full text-center">
-          ya tienes una cuenta?{" "}
+          ya tienes una cuenta?
           <Link className="text-secondary-500 hover:underline" href="signIn">
-            Sign In
+            Iniciar Sesion
           </Link>
         </div>
         <div className="flex w-full text-center justify-center items-center gap-3">
           <hr className="border-neutral-500 w-full" />
-          or
+          o
           <hr className="border-neutral-500 w-full" />
         </div>
         <Button
           onClick={() => signIn("google", { callbackUrl: "/" })}
-          className="w-full bg-secondary-500"
+          className="w-full bg-secondary-400  flex gap-1"
         >
-          Sign Up with Google
+          Registrate Con Google
+          <BsGoogle />
         </Button>
       </form>
     </Form>
