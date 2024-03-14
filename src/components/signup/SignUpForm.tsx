@@ -1,7 +1,6 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
 import { signIn } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -17,13 +16,13 @@ import {
 
 import "./SignUpForm.css"
 import Link from "next/link"
-import { formSchema } from "@/lib/zod"
+import { registerUserFormSchema } from "@/schemas/user.schemas"
 import { BsGoogle } from "react-icons/bs"
+import type { RegisterUserForm } from "@/types/zodExtended.types"
 
 function SignUpForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    // ☝️ infiero el tipo de el formSchema con z.infer
-    resolver: zodResolver(formSchema), // 👈 resolver
+  const form = useForm<RegisterUserForm>({
+    resolver: zodResolver(registerUserFormSchema), // 👈 resolver
     defaultValues: {
       name: "",
       lastName: "",
@@ -162,7 +161,7 @@ function SignUpForm() {
   )
 }
 
-function onSubmit(data: z.infer<typeof formSchema>) {
+function onSubmit(data: RegisterUserForm) {
   console.log(data)
 }
 export default SignUpForm
