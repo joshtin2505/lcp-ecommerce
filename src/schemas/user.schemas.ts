@@ -2,7 +2,7 @@ import { z } from "zod"
 const passwordSchema = z.string().min(8, {
   message: "Password must be at least 8 characters long",
 })
-export const registerUserFormSchema = z
+const registerUserFormSchema = z
   .object({
     name: z
       .string()
@@ -26,3 +26,12 @@ export const registerUserFormSchema = z
     message: "Passwords don't match",
     path: ["confirmPassword"],
   })
+
+const loginUserFormSchema = z.object({
+  email: z.string().email({
+    message: "Please enter a valid email",
+  }),
+  password: passwordSchema,
+})
+
+export { loginUserFormSchema, registerUserFormSchema }
