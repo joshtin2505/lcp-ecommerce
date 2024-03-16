@@ -9,10 +9,13 @@ export const registerUserFormSchema = z
       .min(3, {
         message: "Name must be at least 3 characters long",
       })
-      .max(200, { message: "Name must be less than 200 characters long" }),
-    lastName: z.string().min(3, {
-      message: "Last Name must be at least 3 characters long",
-    }),
+      .max(20, { message: "Name must be less than 200 characters long" }),
+    lastName: z
+      .string()
+      .min(3, {
+        message: "Last Name must be at least 3 characters long",
+      })
+      .max(20, { message: "Last Name must be less than 200 characters long" }),
     email: z.string().email({
       message: "Please enter a valid email",
     }),
