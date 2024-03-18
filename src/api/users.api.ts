@@ -1,18 +1,5 @@
-interface UserRegisterParams {
-  user: {
-    email: string
-    password: string
-    confirmPassword: string
-    name: string
-    lastName: string
-  }
-}
-interface UserLoginParams {
-  user: {
-    email: string
-    password: string
-  }
-}
+import type { LoginUserForm, RegisterUserForm } from "@/types/zodExtended.types"
+
 enum UsersRoutes {
   user = "/users",
   all = "/users/all",
@@ -25,7 +12,7 @@ enum UsersRoutes {
 }
 const END_POINT = "https://lcp-backend-jl1j.onrender.com"
 
-export function register({ user }: UserRegisterParams) {
+export function registerOrdinal(user: RegisterUserForm) {
   return fetch(`${END_POINT}${UsersRoutes.addOrdinal}`, {
     method: "POST",
     headers: {
@@ -35,7 +22,7 @@ export function register({ user }: UserRegisterParams) {
   })
 }
 
-export function login({ user }: UserLoginParams) {
+export function login(user: LoginUserForm) {
   return fetch(`${END_POINT}${UsersRoutes.login}`, {
     method: "POST",
     headers: {
@@ -55,7 +42,8 @@ export function getAll() {
   return fetch(`${END_POINT}${UsersRoutes.all}`)
 }
 
-export function update({ user }: UserRegisterParams) {
+export function update(user: RegisterUserForm) {
+  //  👈 crear tipo
   return fetch(`${END_POINT}${UsersRoutes.update}`, {
     method: "POST",
     headers: {
