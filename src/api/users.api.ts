@@ -22,8 +22,8 @@ export function registerOrdinal(user: RegisterUserForm) {
   })
 }
 
-export function login(user: LoginUserForm) {
-  return fetch(`${END_POINT}${UsersRoutes.login}`, {
+export async function login(user: LoginUserForm) {
+  return await fetch(`${END_POINT}${UsersRoutes.login}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
