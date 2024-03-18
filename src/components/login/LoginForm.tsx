@@ -14,11 +14,12 @@ import {
   FormMessage,
 } from "../ui/form"
 
-import "./LoginForm.css"
+// import "./LoginForm.css"
 import Link from "next/link"
 import { loginUserFormSchema } from "@/schemas/user.schemas"
 import { BsGoogle } from "react-icons/bs"
 import type { LoginUserForm } from "@/types/zodExtended.types"
+import { getAll, login } from "@/api/users.api"
 
 function LoginForm() {
   const form = useForm<LoginUserForm>({
@@ -56,26 +57,20 @@ function LoginForm() {
             </FormItem>
           )}
         />
-        <div className="flex gap-2">
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Contraseña</FormLabel>
-                <FormControl>
-                  <Input
-                    className="input-LoginForm"
-                    type="password"
-                    {...field}
-                  />
-                </FormControl>
-                {/* <FormDescription>This is your password.</FormDescription> */}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Contraseña</FormLabel>
+              <FormControl>
+                <Input className="input-LoginForm" type="password" {...field} />
+              </FormControl>
+              {/* <FormDescription>This is your password.</FormDescription> */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <Button type="submit" className="w-full">
           Iniciar Sesion
         </Button>
@@ -102,7 +97,10 @@ function LoginForm() {
   )
 }
 
-function onSubmit(data: LoginUserForm) {
-  console.log(data)
+async function onSubmit(data: LoginUserForm) {
+  await login(data) // 👈 Login ponerlo en un contexto
+    .then((data) => data.json())
+    .then((res) => console.log(res))
+    .catch((err) => console.log("Error: ", err))
 }
 export default LoginForm
