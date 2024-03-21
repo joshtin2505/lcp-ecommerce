@@ -23,13 +23,21 @@ export function registerOrdinal(user: RegisterUserForm) {
 }
 
 export async function login(user: LoginUserForm) {
-  return await fetch(`${END_POINT}${UsersRoutes.login}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  })
+  try {
+    return await fetch(`${END_POINT}${UsersRoutes.login}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+  } catch (error) {
+    const response = (await error) as Response
+    if (response.status === 401) {
+      return response
+    }
+    console.error(error)
+  }
 }
 
 export function logout() {

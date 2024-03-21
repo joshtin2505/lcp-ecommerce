@@ -19,7 +19,7 @@ import Link from "next/link"
 import { loginUserFormSchema } from "@/schemas/user.schemas"
 import { BsGoogle } from "react-icons/bs"
 import type { LoginUserForm } from "@/types/zodExtended.types"
-import { getAll, login } from "@/api/users.api"
+import { useAuthStore } from "@/store/authStore"
 
 function LoginForm() {
   const form = useForm<LoginUserForm>({
@@ -29,6 +29,21 @@ function LoginForm() {
       password: "",
     },
   })
+  const { signInNormal, authResponse } = useAuthStore()
+  async function onSubmit(data: LoginUserForm) {
+    await signInNormal(data)
+    // console.log(authResponse)
+    if (authResponse === null) return
+    if (authResponse.status === 401) {
+      // Arreglar problema de asincronia en el mensaje de error
+      if (authResponse.message === "EMAIL_NOT_FOUND") {
+        form.setError("email", { message: "Este Correo no esta registrado" })
+      } else if (authResponse.message === "INCORRECT_PASSWORD") {
+        form.setError("password", { message: "Contraseña Incorrecta" })
+      }
+    }
+  }
+
   return (
     <Form {...form}>
       <form
@@ -97,10 +112,4 @@ function LoginForm() {
   )
 }
 
-async function onSubmit(data: LoginUserForm) {
-  await login(data) // 👈 Login ponerlo en un contexto
-    .then((data) => data.json())
-    .then((res) => console.log(res))
-    .catch((err) => console.log("Error: ", err))
-}
 export default LoginForm
