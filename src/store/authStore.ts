@@ -1,4 +1,3 @@
-import { ReactNode, createContext, useState } from "react"
 import { create } from "zustand"
 import {
   deleteUser,
@@ -8,13 +7,25 @@ import {
   registerOrdinal,
   update,
 } from "@/api/users.api"
+// --------------------------------------------------------------------------------- //
 import type { LoginUserForm, RegisterUserForm } from "@/types/zodExtended.types"
-import { UserErrorsType } from "@/types/users.types"
+import type { UserErrorsType, UserSuccessType } from "@/types/users.types"
+import { TokenErrorsType } from "@/types/token.types"
+import type { DataBaseErrorsType } from "@/types/db.types"
+import type {
+  LoginTokenErrorType,
+  LoginUserErrorType,
+  LoginUserSuccessType,
+} from "@/types/response.types"
 
 interface AuthState {
-  authResponse: null | { message: UserErrorsType; status: 401 }
-  // | { message: string; status: Exclude<number, 401> }
-  // | Response
+  authResponse:
+    | { message: UserErrorsType; status: 401 }
+    | { message: DataBaseErrorsType; status: 404 }
+    | { message: TokenErrorsType; status: 500 }
+    | { message: UserSuccessType; status: 200 }
+    | Response
+    | null
   signInNormal: (data: LoginUserForm) => Promise<void>
   // logout: () => Promise<void>
   // register: (form: RegisterUserForm) => Promise<void>
@@ -28,14 +39,46 @@ export const useAuthStore = create<AuthState>((set) => ({
   signInNormal: async (data) => {
     try {
       const response = (await login(data)) as Response
-      // console.log(await response.json())
-      const {message} = (await response.json()) as {
-        message: UserErrorsType
+      if (response.status === 500) {
+        // 👈 500
+        const { message, error } =
+          (await response.json()) as LoginTokenErrorType
+        console.log(error)
+        set({
+          authResponse: {
+            message,
+            status: response.status,
+          },
+        })
+        return
+      } else if (response.status === 404) {
+        // 👈 404
+        const { message } = (await response.json()) as {
+          message: DataBaseErrorsType
+        }
+        set({
+          authResponse: {
+            message,
+            status: response.status,
+          },
+        })
+        return
+      } else if (response.status === 401) {
+        // 👈 401
+        const { message } = (await response.json()) as LoginUserErrorType
+        set({
+          authResponse: {
+            message,
+            status: response.status,
+          },
+        })
+        return
       }
+      const { message } = (await response.json()) as LoginUserSuccessType
       set({
         authResponse: {
           message,
-          status: response.status as 401,
+          status: response.status as 200,
         },
       })
     } catch (error) {
