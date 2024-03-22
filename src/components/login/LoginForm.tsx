@@ -20,6 +20,7 @@ import { loginUserFormSchema } from "@/schemas/user.schemas"
 import { BsGoogle } from "react-icons/bs"
 import type { LoginUserForm } from "@/types/zodExtended.types"
 import { useAuthStore } from "@/store/authStore"
+import { useLoginValidate } from "@/validations/user.validations"
 
 function LoginForm() {
   const form = useForm<LoginUserForm>({
@@ -29,19 +30,13 @@ function LoginForm() {
       password: "",
     },
   })
-  const { signInNormal, authResponse } = useAuthStore()
+  const [validation, handleValidation] = useLoginValidate()
+
+  const { signInNormal } = useAuthStore()
   async function onSubmit(data: LoginUserForm) {
     await signInNormal(data)
-    // console.log(authResponse)
-    if (authResponse === null) return
-    if (authResponse.status === 401) {
-      // Arreglar problema de asincronia en el mensaje de error
-      if (authResponse.message === "EMAIL_NOT_FOUND") {
-        form.setError("email", { message: "Este Correo no esta registrado" })
-      } else if (authResponse.message === "INCORRECT_PASSWORD") {
-        form.setError("password", { message: "Contraseña Incorrecta" })
-      }
-    }
+    // const { setError } = form
+    handleValidation()
   }
 
   return (
