@@ -1,14 +1,16 @@
 import { create } from "zustand"
 import {
-  deleteUser,
-  getAll,
-  login,
-  logout,
-  registerOrdinal,
-  update,
+  deleteUserApi,
+  getAllUsersApi,
+  loginApi,
+  logoutApi,
+  registerApi,
+  registerOrdinalApi,
+  updateApi,
+  getUserApi,
 } from "@/api/users.api"
 // --------------------------------------------------------------------------------- //
-import type { LoginUserForm, RegisterUserForm } from "@/types/zodExtended.types"
+import type { LoginUserForm, RegisterUserForm } from "@/types/extended.types"
 import type { UserErrorsType, UserSuccessType } from "@/types/users.types"
 import { TokenErrorsType } from "@/types/token.types"
 import type { DataBaseErrorsType } from "@/types/db.types"
@@ -20,13 +22,17 @@ import type {
 
 interface AuthState {
   authResponse:
-    | { message: UserErrorsType; status: 401 }
-    | { message: DataBaseErrorsType; status: 404 }
-    | { message: TokenErrorsType; status: 500 }
-    | { message: UserSuccessType; status: 200 }
+    | {
+        message:
+          | TokenErrorsType
+          | DataBaseErrorsType
+          | UserErrorsType
+          | UserSuccessType
+        status: number
+      }
     | Response
     | null
-  signInNormal: (data: LoginUserForm) => Promise<void>
+  login: (data: LoginUserForm) => Promise<void>
   // logout: () => Promise<void>
   // register: (form: RegisterUserForm) => Promise<void>
   // //   update: (form: UpdateUserForm) => Promise<void>
@@ -36,54 +42,25 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>((set) => ({
   authResponse: null,
-  signInNormal: async (data) => {
-    try {
-      const response = (await login(data)) as Response
-      if (response.status === 500) {
-        // 👈 500
-        const { message, error } =
-          (await response.json()) as LoginTokenErrorType
-        console.log(error)
+  login: async (data) => {
+    loginApi(data)
+      .then((res) => {
         set({
           authResponse: {
-            message,
-            status: response.status,
+            message: res.data,
+            status: res.status,
           },
         })
-        return
-      } else if (response.status === 404) {
-        // 👈 404
-        const { message } = (await response.json()) as {
-          message: DataBaseErrorsType
-        }
-        set({
-          authResponse: {
-            message,
-            status: response.status,
-          },
-        })
-        return
-      } else if (response.status === 401) {
-        // 👈 401
-        const { message } = (await response.json()) as LoginUserErrorType
-        set({
-          authResponse: {
-            message,
-            status: response.status,
-          },
-        })
-        return
-      }
-      const { message } = (await response.json()) as LoginUserSuccessType
-      set({
-        authResponse: {
-          message,
-          status: response.status as 200,
-        },
       })
-    } catch (error) {
-      console.error(error)
-    }
+      .catch((err) => {
+        set({
+          authResponse: {
+            message: err.response.data,
+            status: err.response.status,
+          },
+        })
+      })
+    // console.log(response)
   },
   // logout: async () => {
   //   const response = await logout()
