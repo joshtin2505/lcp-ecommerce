@@ -47,7 +47,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       .then((res) => {
         set({
           authResponse: {
-            message: res.data,
+            message: res.data.message,
             status: res.status,
           },
         })
@@ -55,7 +55,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       .catch((err) => {
         set({
           authResponse: {
-            message: err.response.data,
+            message: err.response.data.message,
             status: err.response.status,
           },
         })
