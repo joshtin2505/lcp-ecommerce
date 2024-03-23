@@ -1,43 +1,49 @@
 import { useRouter } from "next/navigation"
 import { useAuthStore } from "@/store/authStore"
-import { useState } from "react"
+import { useEffect } from "react"
 
 type ValidationType = {
   name: "email" | "password" | ""
   message: string
 }
-type ValidationTypeExt = ValidationType | null
-export function useLoginValidate(): [ValidationTypeExt, () => void] {
+export function useLoginValidate() {
   const router = useRouter()
   const { authResponse } = useAuthStore()
 
-  const [validation, setValidation] = useState<ValidationType | null>(null)
+  let validation: ValidationType = {
+    name: "",
+    message: "",
+  }
 
-  function handleValidation() {
+  useEffect(() => {
     if (authResponse === null || authResponse instanceof Response) return
 
     if (authResponse.status === 200) {
-      alert("Login Exitoso")
-      router.push("/")
+      if (authResponse.message === "USER_LOGGED") alert("Login Exitoso")
+      // router.push("/")
     } else if (authResponse.status === 401) {
       if (authResponse.message === "INCORRECT_PASSWORD") {
-        setValidation({
+        validation = {
           name: "password",
           message: "Contraseña Incorrecta",
-        })
+        }
+      } else if (authResponse.message === "EMAIL_NOT_FOUND") {
+        validation = {
+          name: "email",
+          message: "Este Correo no esta registrado",
+        }
       }
     } else if (authResponse.status === 404) {
-      setValidation({
+      validation = {
         name: "email",
         message: "Este Correo no esta registrado",
-      })
+      }
     } else if (authResponse.status === 500) {
       alert("Error Porfavor Intente de Nuevo o Contacte al Administrador")
     }
-  }
+  }, [authResponse])
+  // no pasa los datos, fix this
+  console.log(validation)
 
-  // return { ...validation, auth: authResponse.message }
-  // console.log(validation)
-
-  return [validation, handleValidation]
+  return validation
 }
