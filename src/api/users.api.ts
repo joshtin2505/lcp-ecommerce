@@ -1,16 +1,6 @@
 import type { LoginUserForm, RegisterUserForm } from "@/types/zodExtended.types"
 import axios from "@/lib/axios"
-
-enum UsersRoutes {
-  user = "/users",
-  all = "/users/all",
-  add = "/users/add",
-  update = "/users/update",
-  delete = "/users/delete",
-  login = "/users/login",
-  logout = "/users/logout",
-  addOrdinal = "/users/add-ordinal",
-}
+import { UsersRoutes } from "@/constants/user.constants"
 
 const registerOrdinalApi = (user: RegisterUserForm) =>
   axios.post(UsersRoutes.addOrdinal, user)

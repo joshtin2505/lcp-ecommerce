@@ -20,7 +20,7 @@ import { loginUserFormSchema } from "@/schemas/user.schemas"
 import { BsGoogle } from "react-icons/bs"
 import type { LoginUserForm } from "@/types/zodExtended.types"
 import { useAuthStore } from "@/store/authStore"
-import { useLoginValidate } from "@/validations/user.validations"
+import { useLoginValidate } from "@/hooks/useLoginAuth"
 
 function LoginForm() {
   const form = useForm<LoginUserForm>({
