@@ -1,4 +1,4 @@
-import type { LoginUserForm, RegisterUserForm } from "@/types/zodExtended.types"
+import type { LoginUserForm, RegisterUserForm } from "@/types/extended.types"
 import axios from "@/lib/axios"
 import { UsersRoutes } from "@/constants/user.constants"
 
