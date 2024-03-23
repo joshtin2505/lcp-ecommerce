@@ -18,7 +18,7 @@ import {
 import Link from "next/link"
 import { loginUserFormSchema } from "@/schemas/user.schemas"
 import { BsGoogle } from "react-icons/bs"
-import type { LoginUserForm } from "@/types/zodExtended.types"
+import type { LoginUserForm } from "@/types/extended.types"
 import { useAuthStore } from "@/store/authStore"
 import { useLoginValidate } from "@/hooks/useLoginAuth"
 
@@ -30,13 +30,13 @@ function LoginForm() {
       password: "",
     },
   })
-  const [validation, handleValidation] = useLoginValidate()
+  const validation = useLoginValidate()
 
-  const { signInNormal } = useAuthStore()
+  const { login } = useAuthStore()
   async function onSubmit(data: LoginUserForm) {
-    await signInNormal(data)
+    await login(data)
     // const { setError } = form
-    handleValidation()
+    // console.log(validation)
   }
 
   return (
