@@ -18,7 +18,7 @@ import "./SignUpForm.css"
 import Link from "next/link"
 import { registerUserFormSchema } from "@/schemas/user.schemas"
 import { BsGoogle } from "react-icons/bs"
-import type { RegisterUserForm } from "@/types/zodExtended.types"
+import type { RegisterUserForm } from "@/types/extended.types"
 
 function SignUpForm() {
   const form = useForm<RegisterUserForm>({
