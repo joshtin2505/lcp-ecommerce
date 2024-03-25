@@ -17,7 +17,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion"
 import { useCart } from "@/hooks/useCart"
 import useTheme from "@/hooks/useThemes"
-import { Theme } from "@/types"
+import { Theme } from "@/types/types"
 function Nav() {
   const pathname = usePathname() // Get the current pathname
   const [navDropDown, setNavDropDown] = useState<boolean>(false) // State to control the dropdown menu

@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react"
-import { Cart, type Product } from "@/types.d"
+import type { Cart, Product } from "@/types/types"
 import useCartReducer from "@/hooks/useCartReducer"
 interface ContextValues {
   cart: Cart

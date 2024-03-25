@@ -1,5 +1,5 @@
 import { cartReducer, initialState } from "@/reducers/cartReducer"
-import { CART_ACTIONS, Product } from "@/types.d"
+import { CART_ACTIONS, type Product } from "@/types/types.d"
 import { useReducer } from "react"
 
 function useCartReducer() {

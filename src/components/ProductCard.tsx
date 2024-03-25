@@ -2,7 +2,7 @@
 import Image from "next/image"
 import "./ProductCard.css"
 import { BsCart, BsCartX } from "react-icons/bs"
-import { Product } from "@/types.d"
+import { Product } from "@/types/types"
 import { useCart } from "@/hooks/useCart"
 import { useEffect, useState } from "react"
 
