@@ -1,49 +1,51 @@
+import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { useAuthStore } from "@/store/authStore"
-import { useEffect } from "react"
-
-type ValidationType = {
+import { AuthContext } from "@/context/AuthContext"
+import clsx from "clsx"
+type LoginErrors = {
   name: "email" | "password" | ""
   message: string
 }
-export function useLoginValidate() {
-  const router = useRouter()
-  const { authResponse } = useAuthStore()
 
-  let validation: ValidationType = {
+export function useLoginAuth() {
+  // const router = useRouter()
+  const { response } = useContext(AuthContext)
+  const [errors, setErrors] = useState<LoginErrors>({
     name: "",
     message: "",
-  }
+  })
 
   useEffect(() => {
-    if (authResponse === null || authResponse instanceof Response) return
+    if (response == null) return
 
-    if (authResponse.status === 200) {
-      if (authResponse.message === "USER_LOGGED") alert("Login Exitoso")
-      // router.push("/")
-    } else if (authResponse.status === 401) {
-      if (authResponse.message === "INCORRECT_PASSWORD") {
-        validation = {
+    const { data, status } = response
+    const { message } = data
+    if (status === 200) {
+      if (message === "USER_LOGGED") {
+      }
+    } else if (status === 401) {
+      if (message === "INCORRECT_PASSWORD") {
+        setErrors({
           name: "password",
           message: "Contraseña Incorrecta",
-        }
-      } else if (authResponse.message === "EMAIL_NOT_FOUND") {
-        validation = {
+        })
+        console.log("Contraseña Incorrecta")
+      } else if (message === "EMAIL_NOT_FOUND") {
+        setErrors({
           name: "email",
           message: "Este Correo no esta registrado",
-        }
+        })
       }
-    } else if (authResponse.status === 404) {
-      validation = {
+    } else if (status === 404) {
+      setErrors({
         name: "email",
         message: "Este Correo no esta registrado",
-      }
-    } else if (authResponse.status === 500) {
+      })
+    } else if (status === 500) {
       alert("Error Porfavor Intente de Nuevo o Contacte al Administrador")
     }
-  }, [authResponse])
-  // no pasa los datos, fix this
-  console.log(validation)
-
-  return validation
+  }, [response])
+  return errors
 }
+
+// que el backend devuelva su propios errores y listo
