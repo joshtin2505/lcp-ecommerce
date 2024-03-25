@@ -6,7 +6,7 @@ import {
   Theme,
   ThemeColor,
   TxtColor,
-} from "@/types.d"
+} from "@/types/types"
 import { useEffect, useState } from "react"
 const lightTheme: ThemeColor = {
   primary: {
