@@ -19,9 +19,9 @@ import Link from "next/link"
 import { loginUserFormSchema } from "@/schemas/user.schemas"
 import { BsGoogle } from "react-icons/bs"
 import type { LoginUserForm } from "@/types/extended.types"
-import { useAuthStore } from "@/store/authStore"
-import { useLoginValidate } from "@/hooks/useLoginAuth"
-
+import { AuthContext } from "@/context/AuthContext"
+import { useContext } from "react"
+import { useLoginAuth } from "@/hooks/useLoginAuth"
 function LoginForm() {
   const form = useForm<LoginUserForm>({
     resolver: zodResolver(loginUserFormSchema), // 👈 resolver
@@ -30,13 +30,15 @@ function LoginForm() {
       password: "",
     },
   })
-  const validation = useLoginValidate()
 
-  const { login } = useAuthStore()
-  async function onSubmit(data: LoginUserForm) {
-    await login(data)
-    // const { setError } = form
-    // console.log(validation)
+  const { message, name } = useLoginAuth()
+  const { login } = useContext(AuthContext)
+
+  function onSubmit(data: LoginUserForm) {
+    login(data)
+    const { setError } = form
+    if (name === "") return
+    setError(name, { message })
   }
 
   return (
