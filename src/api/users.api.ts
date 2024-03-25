@@ -1,4 +1,8 @@
-import type { LoginUserForm, RegisterUserForm } from "@/types/extended.types"
+import type {
+  AxiosLoginResponse,
+  LoginUserForm,
+  RegisterUserForm,
+} from "@/types/extended.types"
 import axios from "@/lib/axios"
 import { UsersRoutes } from "@/constants/user.constants"
 
@@ -8,7 +12,8 @@ const registerOrdinalApi = (user: RegisterUserForm) =>
 const registerApi = (user: RegisterUserForm) =>
   axios.post(UsersRoutes.add, user) // 👈 Tipar correctamente
 
-const loginApi = (user: LoginUserForm) => axios.post(UsersRoutes.login, user)
+const loginApi = (user: LoginUserForm): Promise<AxiosLoginResponse> =>
+  axios.post(UsersRoutes.login, user)
 
 const logoutApi = () => axios.post(UsersRoutes.logout)
 
