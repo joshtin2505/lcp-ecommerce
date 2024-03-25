@@ -1,4 +1,4 @@
-import { CART_ACTIONS, Cart, type Product } from "@/types.d"
+import { CART_ACTIONS, Cart, type Product } from "@/types/types.d"
 
 const savedCartString =
   typeof window !== "undefined" ? localStorage.getItem("cart") ?? "[]" : "[]"
