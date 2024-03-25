@@ -1,26 +1,15 @@
-import type { DataBaseErrorsType } from "./db.types"
-import type { TokenErrorsType } from "./token.types"
-import type { UserErrorsType, UserSuccessType } from "./users.types"
-
-type LoginTokenErrorType = {
-  message: TokenErrorsType
-  error: unknown
-}
-
-type LoginDataBaseErrorsType = {
-  message: DataBaseErrorsType
-}
-
-type LoginUserErrorType = {
-  message: UserErrorsType
-}
-
-type LoginUserSuccessType = {
+import { UserErrorsType, UserSuccessType } from "./users.types"
+import { DataBaseErrorsType } from "./db.types"
+import { TokenErrorsType } from "./token.types"
+type LoginResolveType = {
   message: UserSuccessType
 }
-export type {
-  LoginTokenErrorType,
-  LoginDataBaseErrorsType,
-  LoginUserErrorType,
-  LoginUserSuccessType,
-}
+type LoginRejectType =
+  | {
+      message: UserErrorsType
+    }
+  | {
+      message: DataBaseErrorsType | TokenErrorsType
+      error: unknown
+    }
+export type { LoginResolveType, LoginRejectType }
