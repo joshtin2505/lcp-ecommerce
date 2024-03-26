@@ -17,6 +17,7 @@ enum UserSuccess {
   USER_FOUND = "USER_FOUND",
   USER_LOGGED = "USER_LOGGED",
   USER_LOGOUT = "USER_LOGOUT",
+  USER_VERIFIED = "USER_VERIFIED",
 }
 
 enum UsersRoutes {
