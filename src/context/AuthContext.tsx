@@ -1,9 +1,16 @@
-import { ReactNode, createContext, useContext, useState } from "react"
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 import { loginApi } from "@/api/users.api"
 import type { AxiosLoginResponse, LoginUserForm } from "@/types/extended.types"
 import { AxiosError } from "axios"
 import { LoginRejectType } from "@/types/response.types"
-
+import Cookies from "js-cookie"
+import { set } from "zod"
 type AuthRes =
   | AxiosLoginResponse
   | AxiosError<LoginRejectType, any>["response"]
@@ -20,6 +27,8 @@ const { Provider } = AuthContext
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [response, setResponse] = useState<AuthRes>(null)
+  const [authenticated, setAuthenticated] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const login = async (data: LoginUserForm) => {
     loginApi(data)
@@ -32,6 +41,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       })
   }
 
+  useEffect(() => {
+    async function checkLogin() {
+      const cookies = Cookies.get()
+      if (!cookies.token) {
+        setAuthenticated(false)
+        setLoading(false)
+        setResponse(null)
+        return
+      }
+    }
+  }, [])
   return (
     <Provider
       value={{
