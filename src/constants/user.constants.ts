@@ -28,6 +28,7 @@ enum UsersRoutes {
   login = "/users/login",
   logout = "/users/logout",
   addOrdinal = "/users/add-ordinal",
+  verify = "/users/verify",
 }
 
 export { Roles, UserErrors, UserSuccess, UsersRoutes }
