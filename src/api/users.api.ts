@@ -27,6 +27,7 @@ const updateApi = (user: RegisterUserForm) =>
 const deleteUserApi = (id: number) =>
   axios.delete(`${UsersRoutes.delete}/${id}`)
 
+const verifyToken = (token: string) => axios.get(UsersRoutes.verify)
 export {
   registerOrdinalApi,
   registerApi,
@@ -36,4 +37,5 @@ export {
   getUserApi,
   updateApi,
   deleteUserApi,
+  verifyToken,
 }
