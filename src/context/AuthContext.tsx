@@ -1,16 +1,9 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react"
-import { loginApi } from "@/api/users.api"
+import { ReactNode, createContext, useEffect, useState } from "react"
+import { loginApi, verifyToken } from "@/api/users.api"
 import type { AxiosLoginResponse, LoginUserForm } from "@/types/extended.types"
 import { AxiosError } from "axios"
 import { LoginRejectType } from "@/types/response.types"
 import Cookies from "js-cookie"
-import { set } from "zod"
 type AuthRes =
   | AxiosLoginResponse
   | AxiosError<LoginRejectType, any>["response"]
@@ -27,7 +20,9 @@ const { Provider } = AuthContext
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [response, setResponse] = useState<AuthRes>(null)
-  const [authenticated, setAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  // Cambiar tipo a el enum de UserRoles de user.constants.ts
+  const [isAllowed, setIsAllowed] = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
 
   const login = async (data: LoginUserForm) => {
@@ -45,10 +40,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     async function checkLogin() {
       const cookies = Cookies.get()
       if (!cookies.token) {
-        setAuthenticated(false)
+        setIsAuthenticated(false)
         setLoading(false)
         setResponse(null)
         return
+      }
+      try {
+        const res = await verifyToken(cookies.token)
+        if (!res.data) {
+          setIsAuthenticated(false)
+          setLoading(false)
+          return
+        }
+        if (res.data.roll === 0) setIsAllowed(0)
+        else if (res.data.roll === 1) setIsAllowed(1)
+        else if (res.data.roll === 2) setIsAllowed(2)
+        else if (res.data.roll === 3) setIsAllowed(3)
+        setIsAuthenticated(true)
+        setResponse(res.data)
+        setLoading(false)
+      } catch (error) {
+        setIsAuthenticated(false)
+        setResponse(null)
+        setLoading(false)
       }
     }
   }, [])
